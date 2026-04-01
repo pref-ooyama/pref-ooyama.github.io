@@ -18,7 +18,7 @@
             color: #333;
         }
 
-        /* 補助バー（文字サイズ削除） */
+        /* 補助バー（整理後） */
         .utility-bar {
             background-color: #f8f8f8;
             font-size: 11px;
@@ -33,7 +33,6 @@
             justify-content: flex-end;
             gap: 15px;
         }
-        .utility-container span { cursor: default; }
 
         /* メインナビゲーション */
         nav {
@@ -86,7 +85,7 @@
         }
         .main-menu a:hover { background-color: rgba(255,255,255,0.1); }
 
-        /* 検索ボックス（機能付き） */
+        /* 検索ボックス（サイト内完結型） */
         .search-box { display: flex; align-items: center; }
         .search-box input { 
             padding: 6px; 
@@ -175,7 +174,6 @@
 <div class="utility-bar">
     <div class="utility-container">
         <span>Foreign Language</span>
-        <span>音声読み上げ</span>
     </div>
 </div>
 
@@ -195,16 +193,15 @@
             <li><a href="industry.html">産業・仕事</a></li>
         </ul>
 
-        <form action="https://www.google.co.jp/search" method="get" target="_blank" class="search-box">
-            <input type="hidden" name="sitesearch" value="pref-ooyama.github.io">
-            <input type="text" name="q" placeholder="キーワード検索">
-            <button type="submit">検索</button>
-        </form>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="キーワード検索">
+            <button onclick="siteSearch()">検索</button>
+        </div>
     </div>
 </nav>
 
 <div class="container">
-    <div class="main-visual">
+    <div class="main-visual" id="mainVisual">
         ここに大山県の風景画像
     </div>
 
@@ -229,6 +226,26 @@
     <p>&copy; 大山県<br>
     <small>This website is for Roleplay purposes only (Roblox).</small></p>
 </footer>
+
+<script>
+    // 簡易的なサイト内検索スクリプト
+    function siteSearch() {
+        const query = document.getElementById('searchInput').value;
+        if (query.trim() === "") {
+            alert("検索キーワードを入力してください。");
+            return;
+        }
+        // ここではRP用の演出としてアラートを出しますが、将来的に検索結果ページへの遷移なども可能です
+        alert("「" + query + "」を大山県データベースで検索しました。\n該当する資料は現在整備中です。");
+    }
+
+    // エンターキーでも検索できるように設定
+    document.getElementById('searchInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            siteSearch();
+        }
+    });
+</script>
 
 </body>
 </html>
