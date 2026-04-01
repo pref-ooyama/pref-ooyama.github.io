@@ -9,7 +9,7 @@
         :root {
             --main-navy: #232337;
             --bg-light: #f4f7f9;
-            --header-height: 90px; /* 高めに設定 */
+            --header-height: 90px;
         }
 
         body {
@@ -19,7 +19,7 @@
             color: #333;
         }
 
-        /* トップバー */
+        /* トップバー：アイコン・県名は左、メニューは右 */
         header {
             background: var(--main-navy);
             color: white;
@@ -37,28 +37,28 @@
             padding: 0 40px;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* 左と右に分ける */
+            justify-content: space-between;
         }
 
-        /* 左寄せ：ロゴと県名 */
+        /* 左側固定 */
         .brand-area {
             display: flex;
             align-items: center;
             gap: 15px;
-            flex-shrink: 0; /* 縮ませない */
+            flex-shrink: 0;
         }
         .brand-area img {
-            height: 50px; /* はみ出さないサイズ */
+            height: 55px; /* はみ出さない高さ */
             width: auto;
         }
         .brand-area h1 {
             margin: 0;
-            font-size: 26px;
+            font-size: 28px;
             letter-spacing: 2px;
-            white-space: nowrap; /* 改行防止 */
+            white-space: nowrap;
         }
 
-        /* 右寄せ：メニュー項目 */
+        /* 右寄せメニュー */
         .menu-area {
             display: flex;
             list-style: none;
@@ -66,28 +66,66 @@
             padding: 0;
             height: 100%;
         }
-        .menu-area li {
-            height: 100%;
-        }
+        .menu-area li { height: 100%; }
         .menu-area a {
             display: flex;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 25px;
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 16px;
             height: 100%;
             transition: background 0.2s;
         }
-        .menu-area a:hover {
-            background: rgba(255,255,255,0.1);
-        }
+        .menu-area a:hover { background: rgba(255,255,255,0.1); }
 
         .main-container {
             max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
+        }
+
+        /* 職員専用投稿フォーム */
+        .staff-post-section {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin-bottom: 30px;
+            background: #fff;
+            border-radius: 8px;
+        }
+        .staff-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--main-navy);
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 14px;
+        }
+        #postForm {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            background: var(--main-navy);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         /* お知らせエリア */
@@ -125,7 +163,7 @@
         .menu-card {
             background: white;
             border: 1px solid #e0e6ed;
-            padding: 35px 20px;
+            padding: 40px 20px;
             text-align: center;
             text-decoration: none;
             color: var(--main-navy);
@@ -151,7 +189,6 @@
             <img src="oyama.webp" alt="Logo">
             <h1>大山県</h1>
         </div>
-
         <ul class="menu-area">
             <li><a href="police.html">大山県警</a></li>
             <li><a href="fire.html">消防・防災</a></li>
@@ -162,6 +199,25 @@
 </header>
 
 <div class="main-container">
+    <section class="staff-post-section">
+        <button class="staff-toggle-btn" id="toggleForm">+ 職員専用：お知らせを投稿する</button>
+        <div id="postForm">
+            <div class="form-group">
+                <label>認証パスワード</label>
+                <input type="password" id="authPass" placeholder="oyama123">
+            </div>
+            <div class="form-group">
+                <label>配信元（部署・担当名）</label>
+                <input type="text" id="postAuthor" placeholder="例：大山県警 広報課">
+            </div>
+            <div class="form-group">
+                <label>内容</label>
+                <textarea id="postContent" placeholder="お知らせの内容を入力してください"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitPost()">投稿を実行</button>
+        </div>
+    </section>
+
     <section class="news-section">
         <div class="news-title">重要なお知らせ</div>
         <div id="news-loading" style="text-align: center; color: #999; padding: 20px;">データを読み込み中...</div>
@@ -181,16 +237,18 @@
 </footer>
 
 <script>
-    const GAS_URL = "https://script.google.com/macros/s/AKfycbzV3q-FCNPrXhRlHrdi5s4X7_R4rkLlnMZUw-xyG9wMSyyJ6HrP-UHyMsvv2Hz1rQQH/exec";
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbzQ6Z5X2K49-e51N4h0i0ObfYr5Zx40ZSKT-UrJmwsx6Ok6RsRfrVFQPtwQnT3GH9c8/exec";
 
+    // 読み込み機能
     async function loadNews() {
         try {
             const response = await fetch(GAS_URL);
             const data = await response.json();
             const list = document.getElementById('news-list');
+            list.innerHTML = '';
             document.getElementById('news-loading').style.display = 'none';
 
-            data.slice(0, 5).forEach(item => {
+            data.forEach(item => {
                 const li = document.createElement('li');
                 li.className = 'news-item';
                 li.innerHTML = `
@@ -204,9 +262,45 @@
                 list.appendChild(li);
             });
         } catch (e) {
-            document.getElementById('news-loading').innerText = "お知らせの取得に失敗しました。GASの設定（全員へのデプロイ）を確認してください。";
+            document.getElementById('news-loading').innerText = "データの取得に失敗しました。";
         }
     }
+
+    // 投稿機能
+    async function submitPost() {
+        const pass = document.getElementById('authPass').value;
+        const author = document.getElementById('postAuthor').value;
+        const content = document.getElementById('postContent').value;
+        const date = new Date().toLocaleDateString('ja-JP');
+
+        if (pass !== "oyama123") { // パスワード
+            alert("パスワードが違います");
+            return;
+        }
+
+        const btn = document.querySelector('.submit-btn');
+        btn.disabled = true;
+        btn.innerText = "送信中...";
+
+        try {
+            await fetch(GAS_URL, {
+                method: "POST",
+                body: JSON.stringify({ date, author, content })
+            });
+            alert("投稿が完了しました！");
+            location.reload();
+        } catch (e) {
+            alert("投稿に失敗しました。");
+            btn.disabled = false;
+            btn.innerText = "投稿を実行";
+        }
+    }
+
+    // フォーム表示切り替え
+    document.getElementById('toggleForm').addEventListener('click', () => {
+        const form = document.getElementById('postForm');
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    });
 
     loadNews();
 </script>
