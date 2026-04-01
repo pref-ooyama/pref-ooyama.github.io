@@ -3,249 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大山県公式ホームページ - Oyama Prefecture</title>
-    <link rel="icon" href="oyama.webp" type="image/webp">
+    <title>大山県公式ホームページ</title>
     <style>
         :root {
-            --primary-color: #232337;
-            --bg-color: #f0f5f9;
+            --main-navy: #232337;
+            --bg-light: #f4f7f9;
         }
 
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
             margin: 0;
-            background-color: var(--bg-color);
+            background-color: var(--bg-light);
             color: #333;
         }
 
-        /* 補助バー（整理後） */
-        .utility-bar {
-            background-color: #f8f8f8;
-            font-size: 11px;
-            padding: 5px 0;
+        /* 画像を参考にした比率のヘッダー */
+        header {
+            background: white;
             border-bottom: 1px solid #ddd;
         }
-        .utility-container {
+        .header-top {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-        }
-
-        /* メインナビゲーション */
-        nav {
-            background-color: var(--primary-color);
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            height: 70px;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-        }
-        .logo-area img {
-            height: 40px;
-            margin-right: 10px;
-        }
-        .logo-text h1 { margin: 0; font-size: 20px; }
-        .logo-text span { font-size: 10px; display: block; opacity: 0.8; }
-
-        .main-menu {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .main-menu a {
-            padding: 0 15px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            transition: 0.2s;
-        }
-        .main-menu a:hover { background-color: rgba(255,255,255,0.1); }
-
-        /* 検索ボックス（サイト内完結型） */
-        .search-box { display: flex; align-items: center; }
-        .search-box input { 
-            padding: 6px; 
-            border: none; 
-            border-radius: 4px 0 0 4px; 
-            width: 150px; 
-            outline: none;
-        }
-        .search-box button { 
-            background-color: #444466; 
-            color: white; 
-            border: none; 
-            padding: 6px 12px; 
-            border-radius: 0 4px 4px 0; 
-            cursor: pointer; 
-            font-weight: bold; 
-        }
-
-        .container {
-            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
-            min-height: 80vh;
-        }
-
-        .main-visual {
-            background-color: #e0e0e0;
-            height: 300px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            border: 1px solid #ccc;
-            color: #666;
+        }
+        .logo-box { display: flex; align-items: center; gap: 15px; }
+        .logo-box img { height: 50px; }
+        .logo-box h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
+
+        nav { background: var(--main-navy); color: white; }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+        .nav-inner li a {
+            display: block;
+            padding: 15px 25px;
+            color: white;
+            text-decoration: none;
             font-weight: bold;
+            font-size: 14px;
+        }
+        .nav-inner li a:hover { background: rgba(255,255,255,0.1); }
+
+        /* コンテンツ比率の調整 */
+        .main-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        .emergency-box {
-            background-color: #fff3f3;
-            border: 1px solid #ffcccc;
-            padding: 15px;
-            color: #cc0000;
-            border-radius: 4px;
+        /* スプレッドシートから読み込むお知らせエリア */
+        .news-section {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
             margin-bottom: 30px;
-        }
-
-        .tile-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .tile {
-            background: #fff;
             border-radius: 4px;
-            padding: 25px 10px;
+        }
+        .news-title { 
+            border-left: 5px solid var(--main-navy); 
+            padding-left: 15px; 
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .news-list { list-style: none; padding: 0; }
+        .news-item { 
+            padding: 12px 0; 
+            border-bottom: 1px dashed #eee; 
+            display: flex; 
+            flex-direction: column;
+            gap: 5px;
+        }
+        .news-meta { display: flex; gap: 15px; font-size: 13px; color: #666; }
+        .news-tag { background: #e74c3c; color: white; padding: 1px 5px; border-radius: 3px; font-size: 10px; }
+
+        /* タイルメニューの比率 */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .menu-card {
+            background: white;
+            border: 1px solid #e0e6ed;
+            padding: 30px 20px;
             text-align: center;
             text-decoration: none;
-            color: var(--primary-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border: 1px solid #ddd;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: var(--main-navy);
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        .tile:hover { 
-            background-color: #f9f9f9;
-            border-color: var(--primary-color);
+        .menu-card:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--main-navy);
         }
 
-        footer {
-            background-color: #f8f8f8;
-            color: #888;
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid #ddd;
-            margin-top: 60px;
-            font-size: 12px;
-        }
+        footer { text-align: center; padding: 50px 0; color: #999; font-size: 12px; }
     </style>
 </head>
 <body>
 
-<div class="utility-bar">
-    <div class="utility-container">
-        <span>Foreign Language</span>
-    </div>
-</div>
-
-<nav>
-    <div class="nav-container">
-        <a href="index.html" class="logo-area">
+<header>
+    <div class="header-top">
+        <div class="logo-box">
             <img src="oyama.webp" alt="Logo">
-            <div class="logo-text">
-                <h1>大山県</h1>
-                <span>Oyama Prefecture</span>
-            </div>
-        </a>
-        <ul class="main-menu">
-            <li><a href="living.html">くらし・手続き</a></li>
-            <li><a href="welfare.html">健康・福祉</a></li>
-            <li><a href="kanko.html">観光・魅力</a></li>
-            <li><a href="industry.html">産業・仕事</a></li>
-        </ul>
-
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="キーワード検索">
-            <button onclick="siteSearch()">検索</button>
+            <h1>大山県</h1>
         </div>
     </div>
-</nav>
+    <nav>
+        <ul class="nav-inner">
+            <li><a href="police.html">大山県警</a></li>
+            <li><a href="fire.html">消防・防災</a></li>
+            <li><a href="life.html">くらし・手続き</a></li>
+            <li><a href="recruit.html">採用案内</a></li>
+        </ul>
+    </nav>
+</header>
 
-<div class="container">
-    <div class="main-visual" id="mainVisual">
-        ここに大山県の風景画像
-    </div>
-
-    <section class="emergency-box">
-        <h2 style="margin:0; font-size:18px;">【重要】大山火山活動に関する注意情報</h2>
-        <p style="margin: 5px 0 0; font-size: 14px;">現在、大山周辺の登山道の一部が規制されています。詳細は観光課のページをご確認ください。</p>
+<div class="main-container">
+    <section class="news-section">
+        <div class="news-title">重要なお知らせ</div>
+        <div id="news-loading" style="text-align: center; color: #999;">データを読み込み中...</div>
+        <ul class="news-list" id="news-list"></ul>
     </section>
 
-    <div class="tile-grid">
-        <a href="rules.html" class="tile"><b>条例・規則</b></a>
-        <a href="police.html" class="tile"><b>大山県警</b></a>
-        <a href="fire.html" class="tile"><b>消防・防災</b></a>
-        <a href="hospital.html" class="tile"><b>医療・病院</b></a>
-        <a href="bus.html" class="tile"><b>公共交通</b></a>
-        <a href="recruit.html" class="tile"><b>職員採用</b></a>
-        <a href="map.html" class="tile"><b>県内地図</b></a>
-        <a href="law.html" class="tile"><b>裁判・法務</b></a>
+    <div class="menu-grid">
+        <a href="rules.html" class="menu-card">条例・規則</a>
+        <a href="safety.html" class="menu-card">安全・安心な暮らし</a>
+        <a href="traffic.html" class="menu-card">交通安全</a>
+        <a href="medical.html" class="menu-card">医療・病院</a>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 大山県<br>
-    <small>This website is for Roleplay purposes only (Roblox).</small></p>
+    &copy; 大山県 Oyama Prefecture (RP)
 </footer>
 
 <script>
-    // 簡易的なサイト内検索スクリプト
-    function siteSearch() {
-        const query = document.getElementById('searchInput').value;
-        if (query.trim() === "") {
-            alert("検索キーワードを入力してください。");
-            return;
+    // ★ここにデプロイしたGASのURLを貼り付けてください
+    const GAS_URL = "あなたのGASウェブアプリURL";
+
+    async function loadNews() {
+        try {
+            const response = await fetch(GAS_URL);
+            const data = await response.json();
+            const list = document.getElementById('news-list');
+            document.getElementById('news-loading').style.display = 'none';
+
+            data.slice(0, 5).forEach(item => { // 最新5件を表示
+                const li = document.createElement('li');
+                li.className = 'news-item';
+                li.innerHTML = `
+                    <div class="news-meta">
+                        <span class="date">${item.日付}</span>
+                        <span class="news-tag">NEW</span>
+                        <span class="author">配信：${item.配信元}</span>
+                    </div>
+                    <div class="news-text">${item.内容}</div>
+                `;
+                list.appendChild(li);
+            });
+        } catch (e) {
+            document.getElementById('news-loading').innerText = "お知らせの読み込みに失敗しました。";
         }
-        // ここではRP用の演出としてアラートを出しますが、将来的に検索結果ページへの遷移なども可能です
-        alert("「" + query + "」を大山県データベースで検索しました。\n該当する資料は現在整備中です。");
     }
 
-    // エンターキーでも検索できるように設定
-    document.getElementById('searchInput').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            siteSearch();
-        }
-    });
+    loadNews();
 </script>
-
 </body>
 </html>
