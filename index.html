@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大山県公式ホームページ - Oyama Prefecture</title>
+    <style>
+        /* 大山県 指定メインカラー: #232337 */
+        :root {
+            --primary-color: #232337;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --link-color: #0056b3;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        /* 忘れちゃいけないトップバー構造 */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* 1段目：補助メニュー */
+        .top-bar-sub {
+            background-color: #f8f8f8;
+            font-size: 12px;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .top-bar-sub .container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            align-items: center;
+        }
+        .top-bar-sub a {
+            color: #666;
+            text-decoration: none;
+        }
+        .top-bar-sub a:hover {
+            text-decoration: underline;
+        }
+
+        /* 2段目：メインロゴと検索 */
+        .top-bar-main {
+            padding: 10px 0;
+        }
+        .top-bar-main .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* 1. ロゴ画像エリア */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        .logo-area img {
+            height: 50px; /* ロゴの高さを調整 */
+            width: auto;
+            margin-right: 15px;
+        }
+        .logo-text h1 {
+            margin: 0;
+            font-size: 26px;
+            letter-spacing: 2px;
+        }
+        .logo-text span {
+            font-size: 13px;
+            font-weight: normal;
+            display: block;
+            margin-top: -2px;
+        }
+
+        /* 2. 検索窓エリア */
+        .search-area {
+            display: flex;
+            gap: 5px;
+        }
+        .search-area input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-area button {
+            background-color: var(--primary-color); /* 新色適用 */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* 3段目：グローバルナビゲーション (Sticky) */
+        nav {
+            background-color: var(--primary-color); /* 新色適用 */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav li {
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        nav li:last-child {
+            border-right: none;
+        }
+        nav a {
+            display: block;
+            padding: 18px 0;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* メインコンテンツエリア */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .main-content {
+            background-color: #fff;
+            padding: 40px 20px;
+        }
+
+        .main-visual {
+            background-color: #e0e0e0;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            color: #666;
+        }
+
+        h2.section-title {
+            color: var(--primary-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="top-bar-sub">
+        <div class="container">
+            <a href="#">Foreign Language</a>
+            <a href="#">音声読み上げ</a>
+            <div style="color: #666;">
+                文字サイズ： 
+                <button style="cursor:pointer; font-size:11px;">標準</button> 
+                <button style="cursor:pointer; font-size:11px;">拡大</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="top-bar-main">
+        <div class="container">
+            <a href="#" class="logo-area">
+                <img src="oyama.webp" alt="大山県 章">
+                <div class="logo-text">
+                    <h1>大山県</h1>
+                    <span>Oyama Prefecture</span>
+                </div>
+            </a>
+            <div class="search-area">
+                <input type="text" placeholder="キーワードを入力">
+                <button>検索</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <div class="container">
+        <ul>
+            <li><a href="#">くらし・手続き</a></li>
+            <li><a href="#">健康・福祉</a></li>
+            <li><a href="#">観光・魅力</a></li>
+            <li><a href="#">産業・仕事</a></li>
+            <li><a href="#">県政情報</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container main-content">
+    <div class="main-visual">
+        <h3>ここに大山県の雄大な風景画像を配置（大山、清流など）</h3>
+    </div>
+
+    <section>
+        <h2 class="section-title">重要なお知らせ</h2>
+        <div style="background-color: #fff3f3; border: 1px solid #ffcccc; padding: 15px; color: #cc0000; border-radius: 4px;">
+            <p style="margin: 0; font-weight: bold;">【架空】大山火山活動に関する注意情報</p>
+            <p style="margin: 5px 0 0; font-size: 14px;">現在、大山周辺の登山道の一部が規制されています。詳細は観光課のページをご確認ください。</p>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <div class="container">
+        <p>大山県庁： 〒000-0000 大山県大山市中央町1-1-1 (架空の住所です)</p>
+        <p>&copy; 2026 Oyama Prefecture. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
