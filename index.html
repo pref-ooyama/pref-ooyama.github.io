@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>大山県公式ホームページ</title>
-    <!-- アイコン設定の補強 -->
+    <!-- アイコン設定 -->
     <link rel="icon" href="oyama.webp" type="image/webp">
     <link rel="apple-touch-icon" href="oyama.webp">
     
@@ -43,20 +43,23 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 12px; /* アイコンと文字の間隔 */
             text-decoration: none;
             color: white;
         }
+
         .logo-area img {
-            height: 50px;
+            height: 45px; /* アイコンのサイズ */
             width: auto;
-            /* ロゴを白抜きにする処理。元の画像が暗い色なら有効です */
+            /* 背景が紺色なので、ロゴを白抜きにして視認性を高めています */
             filter: brightness(0) invert(1);
         }
+
         .logo-area h1 {
             margin: 0;
-            font-size: 22px;
-            letter-spacing: 1px;
+            font-size: 24px;
+            letter-spacing: 2px;
+            font-weight: bold;
         }
 
         .nav-wrapper {
@@ -107,7 +110,7 @@
             border-bottom: 1px solid #ddd;
             display: flex;
             justify-content: center;
-            overflow-x: auto; /* スマホではみ出した時にスクロール可能に */
+            overflow-x: auto;
         }
         .cat-nav a {
             padding: 15px 20px;
@@ -175,6 +178,7 @@
 
 <header>
     <div class="header-container">
+        <!-- ロゴエリアにアイコン画像を追加 -->
         <a href="#" class="logo-area">
             <img src="oyama.webp" alt="大山県章" onerror="this.style.display='none'">
             <h1>大山県</h1>
@@ -226,13 +230,11 @@
         document.getElementById('pageBody').classList.toggle('mobile-menu-open');
     }
 
-    // Google Apps ScriptのURL
     const PREF_URL = "https://script.google.com/macros/s/AKfycbzQ6Z5X2K49-e51N4h0i0ObfYr5Zx40ZSKT-UrJmwsx6Ok6RsRfrVFQPtwQnT3GH9c8/exec";
     const POLICE_URL = "https://script.google.com/macros/s/AKfycbNPG3HTc8qmTp8M4xDRuqNZUu_H5FVpheKjj9JkQE8-O2VYXDcDYHrGCpSCyUHs2Q/exec";
 
     async function fetchData(url, elementId, isPolice) {
         try {
-            // redirect対応のため fetch のオプションはデフォルトでOK
             const response = await fetch(url);
             if (!response.ok) throw new Error('Network response was not ok');
             
@@ -240,7 +242,6 @@
             const listElement = document.getElementById(elementId);
 
             if (data && data.length > 0) {
-                // データのプロパティ名が「日付/内容」か「date/content」か、GAS側の設定に合わせる
                 listElement.innerHTML = data.slice(-5).reverse().map(item => {
                     const date = item.日付 || item.date || '日付不明';
                     const content = item.内容 || item.content || '内容がありません';
