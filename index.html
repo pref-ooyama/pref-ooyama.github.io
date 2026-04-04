@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>大山県公式ホームページ</title>
-    <!-- アイコン設定 -->
     <link rel="icon" href="oyama.webp" type="image/webp">
     <link rel="apple-touch-icon" href="oyama.webp">
     
@@ -40,27 +39,24 @@
             padding: 0 20px;
         }
 
+        /* --- ロゴエリアの修正 --- */
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px; /* アイコンと文字の間隔 */
             text-decoration: none;
-            color: white;
+            /* 文字がなくなるので、gapは不要 */
+            height: 100%;
         }
 
         .logo-area img {
-            height: 45px; /* アイコンのサイズ */
+            /* ヘッダーの高さに合わせて、ロゴを大きく表示 */
+            height: 60px; 
             width: auto;
-            /* 背景が紺色なので、ロゴを白抜きにして視認性を高めています */
-            filter: brightness(0) invert(1);
+            display: block;
+            /* 元の画像（白背景）をそのまま使用 */
+            border-radius: 4px; /* 少し角を丸くして馴染ませる */
         }
-
-        .logo-area h1 {
-            margin: 0;
-            font-size: 24px;
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
+        /* ----------------------- */
 
         .nav-wrapper {
             display: flex;
@@ -178,10 +174,8 @@
 
 <header>
     <div class="header-container">
-        <!-- ロゴエリアにアイコン画像を追加 -->
         <a href="#" class="logo-area">
-            <img src="oyama.webp" alt="大山県章" onerror="this.style.display='none'">
-            <h1>大山県</h1>
+            <img src="oyama.webp" alt="大山県公式ロゴ" onerror="this.style.display='none'">
         </a>
 
         <button class="menu-btn" onclick="toggleMenu()">メニュー</button>
@@ -233,11 +227,10 @@
     const PREF_URL = "https://script.google.com/macros/s/AKfycbzQ6Z5X2K49-e51N4h0i0ObfYr5Zx40ZSKT-UrJmwsx6Ok6RsRfrVFQPtwQnT3GH9c8/exec";
     const POLICE_URL = "https://script.google.com/macros/s/AKfycbNPG3HTc8qmTp8M4xDRuqNZUu_H5FVpheKjj9JkQE8-O2VYXDcDYHrGCpSCyUHs2Q/exec";
 
-    async function fetchData(url, elementId, isPolice) {
+    async function fetchData(url, elementId) {
         try {
             const response = await fetch(url);
             if (!response.ok) throw new Error('Network response was not ok');
-            
             const data = await response.json();
             const listElement = document.getElementById(elementId);
 
@@ -251,14 +244,13 @@
                 listElement.innerHTML = "<li>現在、新しいお知らせはありません。</li>";
             }
         } catch (error) {
-            console.error("Fetch error:", error);
             document.getElementById(elementId).innerHTML = "<li>お知らせの取得に失敗しました。</li>";
         }
     }
 
     window.onload = () => {
-        fetchData(PREF_URL, 'pref-news', false);
-        fetchData(POLICE_URL, 'police-news', true);
+        fetchData(PREF_URL, 'pref-news');
+        fetchData(POLICE_URL, 'police-news');
     };
 </script>
 </body>
