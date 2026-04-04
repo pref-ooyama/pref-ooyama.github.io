@@ -3,306 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大山県公式ホームページ</title>
-    <link rel="icon" href="oyama.webp" type="image/webp">
+    <title>大山県警察本部</title>
+    <link rel="icon" href="ooyamapolice.webp" type="image/webp">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --main-navy: #232337;
-            --bg-light: #f4f7f9;
-            --header-height: 90px;
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #fff; }
+        .police-nav { background-color: #182b4b !important; min-height: 70px; position: sticky; top: 0; z-index: 1000; }
+        .nav-item-custom { color: white !important; font-weight: bold; transition: 0.3s; }
+        .nav-item-custom:hover { background-color: rgba(255,255,255,0.1) !important; color: #ffdd57 !important; }
+        
+        .main-hero { 
+            width: 100%; height: 50vh; 
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('jikosyori.png') center/cover;
+            display: flex; align-items: center; justify-content: center; 
         }
+        .hero-text { color: white; font-family: 'Shippori Mincho', serif; font-size: 3rem; letter-spacing: 0.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
 
-        body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
-            margin: 0;
-            background-color: var(--bg-light);
-            color: #333;
-        }
+        .news-section { background-color: #f4f7f9; padding: 40px 20px; }
+        .news-card { background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); max-width: 900px; margin: 0 auto; overflow: hidden; }
+        .news-header-title { background: #182b4b; color: white; padding: 15px 20px; font-weight: bold; display: flex; justify-content: space-between; }
+        
+        .news-list { list-style: none; padding: 0; margin: 0; }
+        .news-item { padding: 20px; border-bottom: 1px solid #eee; position: relative; }
+        .news-date { color: #666; font-weight: bold; font-size: 0.85rem; }
+        .news-tag { background: #d9534f; color: white; font-size: 0.7rem; padding: 2px 8px; margin-left: 10px; border-radius: 2px; }
+        .news-content { margin-top: 10px; font-size: 1rem; line-height: 1.5; }
+        .news-author { text-align: right; font-size: 0.8rem; color: #999; margin-top: 10px; }
 
-        /* トップバー：アイコン・県名は左、メニューは右 */
-        header {
-            background: var(--main-navy);
-            color: white;
-            height: var(--header-height);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .menu-card { 
+            border: 1px solid #eee; background: white; padding: 25px; text-align: center; 
+            text-decoration: none; color: #333; font-weight: bold; border-radius: 4px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; min-height: 100px;
         }
+        .menu-card:hover { background: #182b4b; color: white; transform: translateY(-3px); }
 
-        .nav-container {
-            max-width: 1400px;
-            height: 100%;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* 左側固定 */
-        .brand-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-shrink: 0;
-        }
-        .brand-area img {
-            height: 55px; /* はみ出さない高さ */
-            width: auto;
-        }
-        .brand-area h1 {
-            margin: 0;
-            font-size: 28px;
-            letter-spacing: 2px;
-            white-space: nowrap;
-        }
-
-        /* 右寄せメニュー */
-        .menu-area {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-        .menu-area li { height: 100%; }
-        .menu-area a {
-            display: flex;
-            align-items: center;
-            padding: 0 25px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            height: 100%;
-            transition: background 0.2s;
-        }
-        .menu-area a:hover { background: rgba(255,255,255,0.1); }
-
-        .main-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* 職員専用投稿フォーム */
-        .staff-post-section {
-            border: 2px dashed #ccc;
-            padding: 20px;
-            margin-bottom: 30px;
-            background: #fff;
-            border-radius: 8px;
-        }
-        .staff-toggle-btn {
-            background: none;
-            border: none;
-            color: var(--main-navy);
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            font-size: 14px;
-        }
-        #postForm {
-            display: none;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .submit-btn {
-            background: var(--main-navy);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* お知らせエリア */
-        .news-section {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 25px;
-            margin-bottom: 35px;
-            border-radius: 4px;
-        }
-        .news-title { 
-            border-left: 6px solid var(--main-navy); 
-            padding-left: 15px; 
-            margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .news-list { list-style: none; padding: 0; }
-        .news-item { 
-            padding: 15px 0; 
-            border-bottom: 1px dashed #eee; 
-            display: flex; 
-            flex-direction: column;
-            gap: 8px;
-        }
-        .news-meta { display: flex; align-items: center; gap: 15px; font-size: 13px; color: #666; }
-        .news-tag { background: #e74c3c; color: white; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: bold; }
-
-        /* タイルメニュー */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .menu-card {
-            background: white;
-            border: 1px solid #e0e6ed;
-            padding: 40px 20px;
-            text-align: center;
-            text-decoration: none;
-            color: var(--main-navy);
-            font-weight: bold;
-            border-radius: 8px;
-            transition: all 0.3s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        .menu-card:hover { 
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-color: var(--main-navy);
-        }
-
-        footer { text-align: center; padding: 60px 0; color: #999; font-size: 12px; border-top: 1px solid #ddd; margin-top: 50px; }
+        .back-to-top { text-align: center; margin: 20px 0; }
+        .back-to-top a { color: #182b4b; text-decoration: underline; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="nav-container">
-        <div class="brand-area">
-            <img src="oyama.webp" alt="Logo">
-            <h1>大山県</h1>
+<nav class="navbar police-nav">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+                <img src="ooyamapolice.webp" alt="Logo" style="max-height: 50px;">
+                <span style="color:white; margin-left:15px; font-weight:bold; font-size:1.5rem;">大山県警察本部</span>
+            </a>
         </div>
-        <ul class="menu-area">
-            <li><a href="police.html">大山県警</a></li>
-            <li><a href="fire.html">消防・防災</a></li>
-            <li><a href="life.html">くらし・手続き</a></li>
-            <li><a href="recruit.html">採用案内</a></li>
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <a href="safety.html" class="navbar-item nav-item-custom">防犯情報</a>
+                <a href="traffic.html" class="navbar-item nav-item-custom">交通安全</a>
+                <a href="recruit.html" class="navbar-item nav-item-custom">採用案内</a>
+                <a href="index.html" class="navbar-item nav-item-custom" style="background:#cc9900;">県トップへ戻る</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="main-hero">
+    <h2 class="hero-text">「誇りと使命」</h2>
+</section>
+
+<section class="news-section">
+    <div class="news-card">
+        <div class="news-header-title">
+            <span>警察本部からのお知らせ</span>
+            <button id="openModal" style="background:none; border:1px solid white; color:white; cursor:pointer; font-size:0.7rem; border-radius:4px;">職員投稿</button>
+        </div>
+        <ul class="news-list" id="policeNewsList">
+            <li style="padding:40px; text-align:center; color:#999;">読み込み中...</li>
         </ul>
     </div>
-</header>
+</section>
 
-<div class="main-container">
-    <section class="staff-post-section">
-        <button class="staff-toggle-btn" id="toggleForm">+ 職員専用：お知らせを投稿する</button>
-        <div id="postForm">
-            <div class="form-group">
-                <label>認証パスワード</label>
-                <input type="password" id="authPass" placeholder="oyama123">
-            </div>
-            <div class="form-group">
-                <label>配信元（部署・担当名）</label>
-                <input type="text" id="postAuthor" placeholder="例：大山県警 広報課">
-            </div>
-            <div class="form-group">
-                <label>内容</label>
-                <textarea id="postContent" placeholder="お知らせの内容を入力してください"></textarea>
-            </div>
-            <button class="submit-btn" onclick="submitPost()">投稿を実行</button>
-        </div>
-    </section>
+<div class="menu-grid">
+    <a href="license.html" class="menu-card">運転免許</a>
+    <a href="lost_found.html" class="menu-card">落とし物検索</a>
+    <a href="accident.html" class="menu-card">交通事故統計</a>
+    <a href="consult.html" class="menu-card">ご相談窓口</a>
+</div>
 
-    <section class="news-section">
-        <div class="news-title">重要なお知らせ</div>
-        <div id="news-loading" style="text-align: center; color: #999; padding: 20px;">データを読み込み中...</div>
-        <ul class="news-list" id="news-list"></ul>
-    </section>
+<div class="back-to-top">
+    <a href="index.html">← 大山県公式ホームページへ戻る</a>
+</div>
 
-    <div class="menu-grid">
-        <a href="rules.html" class="menu-card">条例・規則</a>
-        <a href="safety.html" class="menu-card">安全・安心な暮らし</a>
-        <a href="traffic.html" class="menu-card">交通安全</a>
-        <a href="medical.html" class="menu-card">医療・病院</a>
+<footer class="footer has-background-dark has-text-white">
+    <div class="content has-text-centered"><p>&copy; 2026 大山県警察本部 (Roleplay Only)</p></div>
+</footer>
+
+<!-- 投稿モーダル（簡易版） -->
+<div class="modal" id="postModal">
+    <div class="modal-background" id="closeModal"></div>
+    <div class="modal-card">
+        <header class="modal-card-head"><p class="modal-card-title">県警本部投稿</p></header>
+        <section class="modal-card-body">
+            <input class="input mb-3" type="password" id="pw" placeholder="パスワード">
+            <input class="input mb-3" type="text" id="dept" placeholder="部署名">
+            <textarea class="textarea" id="body" placeholder="内容"></textarea>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-link" onclick="submitPolicePost()">投稿実行</button>
+        </footer>
     </div>
 </div>
 
-<footer>
-    &copy; 大山県 Oyama Prefecture (Roleplay Only)
-</footer>
-
 <script>
-    const GAS_URL = "https://script.google.com/macros/s/AKfycbzQ6Z5X2K49-e51N4h0i0ObfYr5Zx40ZSKT-UrJmwsx6Ok6RsRfrVFQPtwQnT3GH9c8/exec";
+    const POLICE_GAS_URL = "YOUR_GAS_URL_HERE";
 
-    // 読み込み機能
-    async function loadNews() {
+    async function loadPoliceNews() {
+        const list = document.getElementById('policeNewsList');
         try {
-            const response = await fetch(GAS_URL);
-            const data = await response.json();
-            const list = document.getElementById('news-list');
-            list.innerHTML = '';
-            document.getElementById('news-loading').style.display = 'none';
-
-            data.forEach(item => {
+            const res = await fetch(POLICE_GAS_URL);
+            const data = await res.json();
+            list.innerHTML = "";
+            data.reverse().forEach(item => {
                 const li = document.createElement('li');
-                li.className = 'news-item';
+                li.className = "news-item";
                 li.innerHTML = `
-                    <div class="news-meta">
-                        <span class="date">${item.日付 || ''}</span>
-                        <span class="news-tag">NEW</span>
-                        <span class="author">配信：${item.配信元 || '不明'}</span>
-                    </div>
-                    <div class="news-text">${item.内容 || ''}</div>
+                    <div class="news-date">${item.date}<span class="news-tag">重要</span></div>
+                    <div class="news-content">${item.content}</div>
+                    <div class="news-author">配信：${item.author}</div>
                 `;
                 list.appendChild(li);
             });
-        } catch (e) {
-            document.getElementById('news-loading').innerText = "データの取得に失敗しました。";
-        }
+        } catch(e) { list.innerHTML = "<li class='p-5 has-text-centered'>現在お知らせはありません</li>"; }
     }
 
-    // 投稿機能
-    async function submitPost() {
-        const pass = document.getElementById('authPass').value;
-        const author = document.getElementById('postAuthor').value;
-        const content = document.getElementById('postContent').value;
-        const date = new Date().toLocaleDateString('ja-JP');
+    document.getElementById('openModal').onclick = () => document.getElementById('postModal').classList.add('is-active');
+    document.getElementById('closeModal').onclick = () => document.getElementById('postModal').classList.remove('is-active');
 
-        if (pass !== "oyama123") { // パスワード
-            alert("パスワードが違います");
-            return;
-        }
-
-        const btn = document.querySelector('.submit-btn');
-        btn.disabled = true;
-        btn.innerText = "送信中...";
-
-        try {
-            await fetch(GAS_URL, {
-                method: "POST",
-                body: JSON.stringify({ date, author, content })
-            });
-            alert("投稿が完了しました！");
-            location.reload();
-        } catch (e) {
-            alert("投稿に失敗しました。");
-            btn.disabled = false;
-            btn.innerText = "投稿を実行";
-        }
+    async function submitPolicePost() {
+        const pw = document.getElementById('pw').value;
+        if(pw !== "OyamaKouhouPolice") return alert("認証失敗");
+        // POST処理（GASへ送信するコードを記述）
+        alert("投稿しました（デモ）");
+        location.reload();
     }
 
-    // フォーム表示切り替え
-    document.getElementById('toggleForm').addEventListener('click', () => {
-        const form = document.getElementById('postForm');
-        form.style.display = form.style.display === 'none' ? 'block' : 'none';
-    });
-
-    loadNews();
+    window.onload = loadPoliceNews;
 </script>
 </body>
 </html>
