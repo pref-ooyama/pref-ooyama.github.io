@@ -11,7 +11,6 @@
             --police-navy: #182b4b;
             --accent-red: #d93333;
             --bg-light: #f4f7f9;
-            --header-height: 100px;
         }
 
         body {
@@ -22,251 +21,234 @@
             line-height: 1.6;
         }
 
-        /* ヘッダー・ナビゲーション */
-        header {
-            background: #ffffff;
-            border-bottom: 3px solid var(--main-navy);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-top {
-            background: var(--main-navy);
-            color: white;
-            padding: 10px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-area { display: flex; align-items: center; gap: 15px; }
-        .brand-area img { height: 45px; width: auto; }
-        .brand-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
-
-        /* トップバーメニュー */
-        .top-menu {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 20px;
-        }
-        .top-menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .top-menu a:hover { text-decoration: underline; }
-
-        /* 防災情報（最上部固定） */
+        /* 1. 防災情報（最上部） */
         .disaster-bar {
             background: var(--accent-red);
             color: white;
-            padding: 12px 40px;
+            padding: 10px 20px;
             font-weight: bold;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 14px;
         }
         .disaster-link {
             color: white;
             border: 1px solid white;
-            padding: 2px 12px;
+            padding: 2px 10px;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 12px;
+            white-space: nowrap;
         }
 
-        /* 画像に基づいたメインカテゴリー */
-        .category-nav {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            max-width: 1400px;
-            margin: 0 auto;
-            border-bottom: 1px solid #ddd;
+        /* 2. メインヘッダー（紺色ゾーン） */
+        header {
+            background: var(--main-navy);
+            color: white;
+            padding: 15px 0;
+            position: relative;
         }
-        .category-item {
-            text-align: center;
-            padding: 20px 10px;
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ロゴと上部サブメニュー */
+        .header-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .brand-area { display: flex; align-items: center; gap: 15px; }
+        .brand-area img { height: 40px; width: auto; filter: brightness(0) invert(1); }
+        .brand-area h1 { margin: 0; font-size: 22px; letter-spacing: 2px; }
+
+        .sub-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 15px;
+        }
+        .sub-menu a { color: #ccc; text-decoration: none; font-size: 13px; }
+        .sub-menu a:hover { color: white; }
+
+        /* メインナビゲーション（デスクトップ） */
+        .main-nav {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+        }
+        .nav-list {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-list a {
+            color: white;
             text-decoration: none;
-            color: #333;
             font-size: 14px;
             font-weight: bold;
-            border-right: 1px solid #eee;
-            transition: background 0.2s;
+            padding: 5px 10px;
         }
-        .category-item:last-child { border-right: none; }
-        .category-item:hover { background: #f0f0f0; }
-        .category-item span { display: block; margin-top: 5px; }
+        .nav-list a:hover { color: #f9d58e; }
 
-        /* コンテンツエリア */
+        /* ハンバーガーメニュー（スマホ） */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* 3. コンテンツエリア */
         .main-container {
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
-        /* お知らせ2カラム */
         .news-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 25px;
         }
-        @media (max-width: 800px) { .news-grid { grid-template-columns: 1fr; } }
 
-        .news-section { background: white; border: 1px solid #ddd; padding: 25px; border-radius: 4px; }
-        .news-title { 
-            border-left: 6px solid var(--main-navy); 
-            padding-left: 15px; 
-            margin-bottom: 20px; 
-            font-size: 18px; 
-            font-weight: bold; 
-        }
+        .news-section { background: white; border: 1px solid #ddd; padding: 20px; }
+        .news-title { border-left: 5px solid var(--main-navy); padding-left: 12px; margin-bottom: 15px; font-weight: bold; }
         .title-police { border-left-color: var(--police-navy); }
+        .news-list { list-style: none; padding: 0; font-size: 14px; }
+        .news-item { padding: 10px 0; border-bottom: 1px dashed #eee; }
+        .tag { font-size: 10px; padding: 2px 4px; background: #eee; margin-right: 5px; }
 
-        .news-list { list-style: none; padding: 0; margin: 0; }
-        .news-item { padding: 12px 0; border-bottom: 1px dashed #eee; }
-        .news-meta { font-size: 12px; color: #666; margin-bottom: 5px; }
-        .tag { background: #eee; color: #333; padding: 2px 6px; font-size: 10px; font-weight: bold; margin-right: 8px; }
+        /* 4. レスポンシブ対応 */
+        @media (max-width: 850px) {
+            .sub-menu, .main-nav { display: none; } /* デフォルトで隠す */
+            .menu-toggle { display: block; } /* ボタン表示 */
+            
+            .header-top-row { margin-bottom: 0; }
+            .news-grid { grid-template-columns: 1fr; }
 
-        /* 職員投稿エリア */
-        .staff-area {
-            border: 1px dashed #bbb;
-            padding: 15px;
-            background: #fff;
-            margin-bottom: 30px;
-            text-align: center;
+            /* モバイルメニュー展開時 */
+            .mobile-open .sub-menu, 
+            .mobile-open .main-nav {
+                display: block;
+                width: 100%;
+                background: var(--main-navy);
+                position: absolute;
+                left: 0;
+                top: 100%;
+                z-index: 999;
+                padding: 20px;
+                border-top: 1px solid rgba(255,255,255,0.2);
+            }
+            .mobile-open .nav-list { flex-direction: column; gap: 15px; }
+            .mobile-open .sub-menu { display: flex; flex-wrap: wrap; margin-bottom: 20px; }
         }
-        .staff-btn { background: none; border: none; color: #666; cursor: pointer; font-size: 13px; font-weight: bold; }
-        #postForm { display: none; text-align: left; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; }
-        .form-group { margin-bottom: 10px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; box-sizing: border-box; }
-        .submit-btn { background: var(--main-navy); color: white; border: none; padding: 10px 20px; cursor: pointer; }
 
-        footer { text-align: center; padding: 50px 0; color: #888; font-size: 12px; border-top: 1px solid #ddd; background: white; }
+        footer { text-align: center; padding: 40px 0; color: #888; font-size: 11px; }
     </style>
 </head>
-<body>
+<body id="bodyTag">
 
-<!-- 防災情報（最上部） -->
 <div class="disaster-bar">
-    <span>【防災・緊急情報】現在、重大な災害情報は発表されていません。</span>
+    <span>【防災】重大な災害情報は発表されていません</span>
     <a href="fire.html" class="disaster-link">詳細確認</a>
 </div>
 
 <header>
-    <div class="header-top">
-        <div class="brand-area">
-            <img src="oyama.webp" alt="大山県章">
-            <h1>大山県</h1>
-        </div>
-        <ul class="top-menu">
-            <li><a href="police.html">大山県警本部</a></li>
-            <li><a href="fire.html">消防局</a></li>
-            <li><a href="contact.html">お問い合わせ</a></li>
-            <li><a href="sitemap.html">サイトマップ</a></li>
-        </ul>
-    </div>
+    <div class="header-inner">
+        <div class="header-top-row">
+            <div class="brand-area">
+                <img src="oyama.webp" alt="県章">
+                <h1>大山県</h1>
+            </div>
+            
+            <!-- スマホ用ボタン -->
+            <button class="menu-toggle" onclick="toggleMenu()">MENU</button>
 
-    <!-- 画像内容に基づくナビゲーション -->
-    <nav class="category-nav">
-        <a href="life.html" class="category-item">くらし・子育て</a>
-        <a href="medical.html" class="category-item">健康・福祉</a>
-        <a href="work.html" class="category-item">しごと・産業</a>
-        <a href="tourism.html" class="category-item">観光・文化・スポーツ</a>
-        <a href="land.html" class="category-item">県土・まちづくり</a>
-        <a href="admin.html" class="category-item">県政情報</a>
-        <a href="recruit.html" class="category-item" style="background: #fff9e6;">採用案内</a>
-    </nav>
+            <!-- サブメニュー -->
+            <ul class="sub-menu">
+                <li><a href="police.html">大山県警本部</a></li>
+                <li><a href="fire.html">消防局</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+                <li><a href="sitemap.html">サイトマップ</a></li>
+            </ul>
+        </div>
+
+        <!-- メインナビ -->
+        <nav class="main-nav" id="mainNav">
+            <ul class="nav-list">
+                <li><a href="life.html">くらし・子育て</a></li>
+                <li><a href="medical.html">健康・福祉</a></li>
+                <li><a href="work.html">しごと・産業</a></li>
+                <li><a href="tourism.html">観光・文化</a></li>
+                <li><a href="land.html">県土・まちづくり</a></li>
+                <li><a href="admin.html">県政情報</a></li>
+                <li><a href="recruit.html" style="color:#f9d58e;">採用案内</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 <div class="main-container">
-
-    <!-- 職員用投稿フォーム -->
-    <section class="staff-area">
-        <button class="staff-btn" onclick="toggleForm()">+ 職員専用：お知らせ投稿管理</button>
-        <div id="postForm">
-            <div class="form-group"><input type="password" id="authPass" placeholder="パスワード"></div>
-            <div class="form-group"><input type="text" id="postAuthor" placeholder="部署名"></div>
-            <div class="form-group"><textarea id="postContent" placeholder="お知らせ内容"></textarea></div>
-            <button class="submit-btn" onclick="submitPost()">投稿を実行</button>
-        </div>
-    </section>
-
-    <!-- お知らせセクション -->
     <div class="news-grid">
-        <!-- 県庁お知らせ -->
         <section class="news-section">
             <div class="news-title">県政からのお知らせ</div>
-            <ul class="news-list" id="pref-news-list">
-                <li style="text-align:center; color:#999; padding:20px;">読み込み中...</li>
-            </ul>
+            <ul class="news-list" id="pref-list"><li>読み込み中...</li></ul>
         </section>
 
-        <!-- 県警お知らせ -->
         <section class="news-section">
             <div class="news-title title-police">大山県警からのお知らせ</div>
-            <ul class="news-list" id="police-news-list">
-                <li style="text-align:center; color:#999; padding:20px;">読み込み中...</li>
-            </ul>
+            <ul class="news-list" id="police-list"><li>読み込み中...</li></ul>
         </section>
     </div>
-
 </div>
 
 <footer>
-    &copy; 大山県 Oyama Prefecture (Roleplay Only)
+    &copy; 大山県 Oyama Prefecture
 </footer>
 
 <script>
-    // GAS設定
-    const PREF_GAS_URL = "https://script.google.com/macros/s/AKfycbzQ6Z5X2K49-e51N4h0i0ObfYr5Zx40ZSKT-UrJmwsx6Ok6RsRfrVFQPtwQnT3GH9c8/exec";
-    const POLICE_GAS_URL = "https://script.google.com/macros/s/AKfycbzNPG3HTc8qmTp8M4xDRuqNZUu_H5FVpheKjj9JkQE8-O2VYXDcDYHrGCpSCyUHs2Q/exec";
+    // ハンバーガーメニュー制御
+    function toggleMenu() {
+        document.getElementById('bodyTag').classList.toggle('mobile-open');
+    }
 
-    // お知らせ読み込み
-    async function loadNews() {
+    // GAS読み込み処理（URLは適宜最新に書き換えてください）
+    const PREF_URL = "https://script.google.com/macros/s/AKfycbzQ6Z5X2K49-e51N4h0i0ObfYr5Zx40ZSKT-UrJmwsx6Ok6RsRfrVFQPtwQnT3GH9c8/exec";
+    const POLICE_URL = "https://script.google.com/macros/s/AKfycbNPG3HTc8qmTp8M4xDRuqNZUu_H5FVpheKjj9JkQE8-O2VYXDcDYHrGCpSCyUHs2Q/exec";
+
+    async function fetchNews() {
         try {
-            // 県庁
-            const pRes = await fetch(PREF_GAS_URL);
+            const [pRes, polRes] = await Promise.all([fetch(PREF_URL), fetch(POLICE_URL)]);
             const pData = await pRes.json();
-            const pList = document.getElementById('pref-news-list');
-            pList.innerHTML = '';
-            pData.slice(-5).reverse().forEach(item => {
-                const li = document.createElement('li');
-                li.className = 'news-item';
-                li.innerHTML = `<div class="news-meta"><span class="tag">県政</span>${item.日付 || ''} - ${item.配信元 || ''}</div><div>${item.内容 || ''}</div>`;
-                pList.appendChild(li);
-            });
-
-            // 県警
-            const polRes = await fetch(POLICE_GAS_URL);
             const polData = await polRes.json();
-            const polList = document.getElementById('police-news-list');
-            polList.innerHTML = '';
-            polData.slice(-5).reverse().forEach(item => {
-                const li = document.createElement('li');
-                li.className = 'news-item';
-                li.innerHTML = `<div class="news-meta"><span class="tag" style="background:#182b4b;color:white;">警察</span>${item.date || ''} - ${item.author || ''}</div><div>${item.content || ''}</div>`;
-                polList.appendChild(li);
-            });
-        } catch (e) { console.error("データ取得エラー"); }
+
+            const render = (id, data, label) => {
+                const el = document.getElementById(id);
+                el.innerHTML = data.slice(-5).reverse().map(item => `
+                    <li class="news-item">
+                        <div class="news-meta"><span class="tag">${label}</span>${item.日付 || item.date || ''}</div>
+                        <div>${item.内容 || item.content || ''}</div>
+                    </li>
+                `).join('');
+            };
+
+            render('pref-list', pData, '県政');
+            render('police-list', polData, '警察');
+        } catch (e) { console.error("Load failed"); }
     }
 
-    function toggleForm() {
-        const f = document.getElementById('postForm');
-        f.style.display = (f.style.display === 'block') ? 'none' : 'block';
-    }
-
-    async function submitPost() {
-        const pass = document.getElementById('authPass').value;
-        if (pass !== "oyama123") { alert("パスワードが違います"); return; }
-        // 実際のPOST処理をここに記述
-        alert("投稿機能はGAS側と連携して動作します。");
-    }
-
-    window.onload = loadNews;
+    window.onload = fetchNews;
 </script>
 </body>
 </html>
