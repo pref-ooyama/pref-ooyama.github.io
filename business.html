@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビジネス・産業 - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f0f2f5;
+            --text-color: #333;
+            --white: #ffffff;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- トップバー：index.htmlと完全に同一の構造 --- */
+        header {
+            background: var(--main-color);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--white);
+        }
+        
+        .logo-area img { height: 45px; }
+        .logo-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
+
+        .main-nav { 
+            display: flex; 
+            list-style: none; 
+            margin: 0; 
+            padding: 0;
+            gap: 5px;
+        }
+
+        .nav-item {
+            padding: 10px 15px;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* --- ビジネスコンテンツ --- */
+        .content {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .business-hero {
+            background: var(--main-color);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+            border-left: 4px solid var(--main-color);
+            padding-left: 10px;
+            font-size: 18px;
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .link-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .link-list li a {
+            text-decoration: none;
+            color: var(--main-color);
+            font-size: 15px;
+        }
+
+        .link-list li a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #777;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <nav class="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <div class="business-hero">
+        <h2 style="margin:0;">ビジネス・産業情報</h2>
+        <p style="margin: 10px 0 0 0; opacity: 0.8;">大山県での起業・経営支援、入札情報などをお伝えします。</p>
+    </div>
+
+    <div class="section-grid">
+        <!-- 入札・契約 -->
+        <div class="info-card">
+            <h3>入札・契約</h3>
+            <ul class="link-list">
+                <li><a href="#">入札公告・結果</a></li>
+                <li><a href="#">電子入札システム</a></li>
+                <li><a href="#">業者登録の手続き</a></li>
+            </ul>
+        </div>
+
+        <!-- 産業支援・起業 -->
+        <div class="info-card">
+            <h3>産業支援・起業</h3>
+            <ul class="link-list">
+                <li><a href="#">中小企業向け融資制度</a></li>
+                <li><a href="#">スタートアップ支援</a></li>
+                <li><a href="#">伝統工芸品の振興</a></li>
+            </ul>
+        </div>
+
+        <!-- 雇用・労働 -->
+        <div class="info-card">
+            <h3>雇用・労働</h3>
+            <ul class="link-list">
+                <li><a href="#">県内就職ガイダンス</a></li>
+                <li><a href="#">労働相談窓口</a></li>
+                <li><a href="#">職業能力開発校について</a></li>
+            </ul>
+        </div>
+
+        <!-- 農林水産業 -->
+        <div class="info-card">
+            <h3>農林水産業</h3>
+            <ul class="link-list">
+                <li><a href="#">大山ブランド農産物</a></li>
+                <li><a href="#">新規就農支援</a></li>
+                <li><a href="#">水産業の活性化計画</a></li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<footer>
+    &copy; 大山県 Oyama Prefecture
+</footer>
+
+</body>
+</html>
