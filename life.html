@@ -12,6 +12,7 @@
             --text-color: #333;
             --white: #ffffff;
             --border-color: #ddd;
+            --accent-blue: #4a4a6a;
         }
 
         body {
@@ -22,7 +23,7 @@
             line-height: 1.6;
         }
 
-        /* --- トップバー：共通構造 --- */
+        /* --- トップバー：共通構造を維持 --- */
         header {
             background: var(--main-color);
             color: var(--white);
@@ -67,32 +68,31 @@
             font-size: 14px;
             font-weight: bold;
             border-radius: 4px;
-            transition: background 0.2s;
         }
 
-        .nav-item:hover {
-            background: rgba(255,255,255,0.1);
-        }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
 
-        /* --- コンテンツエリア --- */
+        /* --- コンテンツ：縦並び (Flex Column) --- */
         .content {
-            max-width: 1000px;
+            max-width: 800px; /* 縦並びなので少し幅を絞ると読みやすい */
             margin: 40px auto;
             padding: 0 20px;
         }
 
         .hero-banner {
-            background: #4a4a6a; /* ビジネスより少し明るめの色分け */
+            background: var(--accent-blue);
             color: var(--white);
-            padding: 40px;
+            padding: 30px;
             border-radius: 8px;
             margin-bottom: 30px;
+            text-align: center;
         }
 
-        .section-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+        /* ここを grid から flex-direction: column に変更 */
+        .section-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
         .info-card {
@@ -100,13 +100,12 @@
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--accent-blue); /* 左の線を太くして見出し感を強調 */
         }
 
         .info-card h3 {
-            margin-top: 0;
-            border-left: 4px solid #4a4a6a;
-            padding-left: 10px;
-            font-size: 18px;
+            margin: 0 0 15px 0;
+            font-size: 20px;
             color: var(--main-color);
         }
 
@@ -114,29 +113,28 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            flex-wrap: wrap; /* リスト内だけは横に並んでもいい場合はここを生かす */
+            gap: 15px;
         }
 
+        /* 項目自体も縦に並べる場合 */
         .link-list li {
-            padding: 12px 0;
+            width: 100%; 
             border-bottom: 1px solid #eee;
+            padding: 8px 0;
         }
 
-        .link-list li:last-child {
-            border-bottom: none;
-        }
+        .link-list li:last-child { border-bottom: none; }
 
         .link-list li a {
             text-decoration: none;
-            color: #444;
-            font-size: 15px;
+            color: #0044cc;
+            font-weight: bold;
             display: block;
-            width: 100%;
         }
 
-        .link-list li a:hover {
-            color: #0044cc;
-            text-decoration: underline;
-        }
+        .link-list li a:hover { text-decoration: underline; }
 
         footer {
             text-align: center;
@@ -169,47 +167,43 @@
 <main class="content">
     <div class="hero-banner">
         <h2 style="margin:0;">くらし・手続き</h2>
-        <p style="margin: 10px 0 0 0; opacity: 0.9;">県民の皆様の日常生活を支える申請や窓口をご案内します。</p>
     </div>
 
-    <div class="section-grid">
-        <!-- 届出・証明 -->
+    <div class="section-vertical">
+        <!-- 各カードが縦に積み重なる -->
         <div class="info-card">
             <h3>届出・証明</h3>
             <ul class="link-list">
-                <li><a href="koseki.html">戸籍・住民票の写し</a></li>
-                <li><a href="mynumber.html">マイナンバーカード関連</a></li>
-                <li><a href="passport.html">パスポートの申請・交付</a></li>
+                <li><a href="koseki.html">・戸籍・住民票の写し</a></li>
+                <li><a href="mynumber.html">・マイナンバーカード関連</a></li>
+                <li><a href="passport.html">・パスポートの申請・交付</a></li>
             </ul>
         </div>
 
-        <!-- 税・年金・保険 -->
         <div class="info-card">
             <h3>税・年金・保険</h3>
             <ul class="link-list">
-                <li><a href="ken-zei.html">県税の種類と納付方法</a></li>
-                <li><a href="nenkin.html">国民年金の手続き</a></li>
-                <li><a href="hoken.html">国民健康保険</a></li>
+                <li><a href="ken-zei.html">・県税の種類と納付方法</a></li>
+                <li><a href="nenkin.html">・国民年金の手続き</a></li>
+                <li><a href="hoken.html">・国民健康保険</a></li>
             </ul>
         </div>
 
-        <!-- 住まい・環境 -->
         <div class="info-card">
             <h3>住まい・環境</h3>
             <ul class="link-list">
-                <li><a href="gomi.html">ゴミの分別・リサイクル</a></li>
-                <li><a href="jutaku.html">県営住宅の入居案内</a></li>
-                <li><a href="pet.html">ペット・動物愛護</a></li>
+                <li><a href="gomi.html">・ゴミの分別・リサイクル</a></li>
+                <li><a href="jutaku.html">・県営住宅の入居案内</a></li>
+                <li><a href="pet.html">・ペット・動物愛護</a></li>
             </ul>
         </div>
 
-        <!-- 移住・定住支援 -->
         <div class="info-card">
             <h3>移住・定住支援</h3>
             <ul class="link-list">
-                <li><a href="ijyu.html">大山県への移住相談</a></li>
-                <li><a href="akiya.html">空き家バンク情報</a></li>
-                <li><a href="subsidy.html">引越し・住まい補助金</a></li>
+                <li><a href="ijyu.html">・大山県への移住相談</a></li>
+                <li><a href="akiya.html">・空き家バンク情報</a></li>
+                <li><a href="subsidy.html">・引越し・住まい補助金</a></li>
             </ul>
         </div>
     </div>
