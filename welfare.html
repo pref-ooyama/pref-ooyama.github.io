@@ -11,7 +11,7 @@
             --bg-light: #f9f9fb;
             --text-color: #333;
             --white: #ffffff;
-            --accent-soft: #607d8b; /* 落ち着いたブルーグレー */
+            --accent-soft: #607d8b; 
             --border-color: #eceff1;
         }
 
@@ -23,7 +23,7 @@
             line-height: 1.8;
         }
 
-        /* --- ヘッダー（共通・不変） --- */
+        /* --- ヘッダー（共通） --- */
         header { background: var(--main-color); color: var(--white); position: sticky; top: 0; z-index: 1000; }
         .header-container { width: 100%; display: flex; align-items: center; justify-content: space-between; height: 70px; padding: 0 30px; box-sizing: border-box; }
         .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); }
@@ -33,7 +33,7 @@
         .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
         .nav-item:hover { background: rgba(255,255,255,0.1); }
 
-        /* --- 独自のストライプ構造 --- */
+        /* --- ストライプ構造 --- */
         .page-header {
             background: var(--bg-light);
             padding: 60px 20px;
@@ -76,12 +76,6 @@
             display: inline-block;
         }
 
-        .section-title-area p {
-            font-size: 14px;
-            color: #777;
-            margin: 10px 0 0 0;
-        }
-
         .links-area {
             flex: 1;
             display: grid;
@@ -111,13 +105,11 @@
 
         .welfare-link::after {
             content: "→";
-            font-weight: normal;
             opacity: 0.5;
         }
 
         @media (max-width: 768px) {
             .section-inner { flex-direction: column; gap: 30px; }
-            .section-title-area { flex: none; }
             .links-area { grid-template-columns: 1fr; }
         }
 
@@ -149,50 +141,34 @@
 </div>
 
 <main>
-    <!-- セクション 1 -->
+    <!-- 高齢者福祉 -->
     <section class="welfare-section">
         <div class="section-inner">
             <div class="section-title-area">
                 <h3>高齢者福祉</h3>
-                <p>介護や生活支援、いきがいづくりに関する情報。</p>
+                <p>介護保険や生活支援、いきがいづくりに関するご案内です。</p>
             </div>
             <div class="links-area">
-                <a href="care-insurance.html" class="welfare-link">介護保険制度</a>
-                <a href="elderly-support.html" class="welfare-link">在宅介護支援サービス</a>
+                <a href="care-insurance.html" class="welfare-link">介護保険制度について</a>
+                <a href="elderly-support.html" class="welfare-link">在宅介護支援</a>
                 <a href="silver-center.html" class="welfare-link">シルバー人材センター</a>
                 <a href="nursing-homes.html" class="welfare-link">老人ホーム・施設一覧</a>
             </div>
         </div>
     </section>
 
-    <!-- セクション 2 -->
+    <!-- 健康・医療 -->
     <section class="welfare-section">
         <div class="section-inner">
             <div class="section-title-area">
                 <h3>健康・医療</h3>
-                <p>感染症対策や検診、救急医療の案内。</p>
+                <p>日々の健康管理、検診、救急医療の情報を掲載しています。</p>
             </div>
             <div class="links-area">
                 <a href="medical-subsidy.html" class="welfare-link">医療費の助成制度</a>
                 <a href="emergency.html" class="welfare-link">夜間・休日診療案内</a>
-                <a href="vaccination.html" class="welfare-link">予防接種スケジュール</a>
+                <a href="vaccination.html" class="welfare-link">予防接種の案内</a>
                 <a href="cancer-screening.html" class="welfare-link">がん検診のお知らせ</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- セクション 3 -->
-    <section class="welfare-section">
-        <div class="section-inner">
-            <div class="section-title-area">
-                <h3>障がい者福祉</h3>
-                <p>自立支援や手当、社会参加の促進。</p>
-            </div>
-            <div class="links-area">
-                <a href="shougai-techo.html" class="welfare-link">障がい者手帳の申請</a>
-                <a href="rehabilitation.html" class="welfare-link">リハビリテーション施設</a>
-                <a href="employment.html" class="welfare-link">障がい者雇用支援</a>
-                <a href="barrier-free.html" class="welfare-link">バリアフリーマップ</a>
             </div>
         </div>
     </section>
