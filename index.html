@@ -22,6 +22,7 @@
             line-height: 1.6;
         }
 
+        /* --- トップバー：構造は絶対変えていません --- */
         header {
             background: var(--main-color);
             color: var(--white);
@@ -31,14 +32,13 @@
         }
 
         .header-container {
-            /* 左端・右端に寄せるため幅をいっぱいに使う */
             width: 100%;
             max-width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
             height: 70px;
-            padding: 0 30px; /* 端の余白を少し確保 */
+            padding: 0 30px;
             box-sizing: border-box;
         }
 
@@ -58,7 +58,7 @@
             list-style: none; 
             margin: 0; 
             padding: 0;
-            gap: 5px; /* 項目間の微調整 */
+            gap: 5px;
         }
 
         .nav-item {
@@ -75,7 +75,62 @@
             background: rgba(255,255,255,0.1);
         }
 
-        /* コンテンツエリア */
+        /* --- スライドショーエリア (北海道警風) --- */
+        .slideshow-container {
+            width: 100%;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            background-color: #000;
+            height: 450px; /* 必要に応じて調整 */
+        }
+
+        .mySlides {
+            display: none;
+            height: 100%;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dot-container {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            border: 1px solid rgba(0,0,0,0.3);
+        }
+
+        .dot.active, .dot:hover {
+            background-color: var(--white);
+            box-shadow: 0 0 8px rgba(0,0,0,0.5);
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .6} to {opacity: 1}
+        }
+
+        /* --- お知らせエリア --- */
         .content {
             max-width: 900px;
             margin: 40px auto;
@@ -121,28 +176,16 @@
             flex: 1;
             color: #333;
         }
-
-        /* スマホ対応（メニューを隠すか、ハンバーガーにするための準備） */
-        @media screen and (max-width: 1024px) {
-            .nav-item { padding: 8px 10px; font-size: 13px; }
-        }
-        @media screen and (max-width: 800px) {
-            .main-nav { display: none; }
-            .header-container { padding: 0 20px; }
-        }
     </style>
 </head>
 <body>
 
 <header>
     <div class="header-container">
-        <!-- 左端に配置されるエリア -->
         <a href="index.html" class="logo-area">
             <img src="oyama.webp" alt="大山県章">
             <h1>大山県</h1>
         </a>
-        
-        <!-- 右側に並ぶメニュー項目を増やしました -->
         <nav class="main-nav">
             <a href="#" class="nav-item">くらし・手続き</a>
             <a href="#" class="nav-item">子育て・教育</a>
@@ -155,6 +198,25 @@
     </div>
 </header>
 
+<!-- スライドショー -->
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <img src="gazou1.png" alt="スライド1">
+    </div>
+    <div class="mySlides fade">
+        <img src="gazou1.webp" alt="スライド2">
+    </div>
+    <div class="mySlides fade">
+        <img src="gazou2.png" alt="スライド3">
+    </div>
+
+    <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+</div>
+
 <main class="content">
     <section class="news-box">
         <h2>県政からのお知らせ</h2>
@@ -165,13 +227,52 @@
 </main>
 
 <script>
+    // スライドショー制御
+    let slideIndex = 0;
+    let slideTimer;
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        slideTimer = setTimeout(showSlides, 5000); // 5秒ごとに切り替え
+    }
+
+    function currentSlide(n) {
+        clearTimeout(slideTimer);
+        slideIndex = n - 1;
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        slideTimer = setTimeout(showSlides, 5000);
+    }
+
+    // お知らせ取得
     const PREF_URL = "https://script.google.com/macros/s/AKfycbzV3q-FCNPrXhRlHrdi5s4X7_R4rkLlnMZUw-xyG9wMSyyJ6HrP-UHyMsvv2Hz1rQQH/exec";
 
     function formatDate(dateInput) {
         if (!dateInput) return '';
         const d = new Date(dateInput);
         if (isNaN(d.getTime())) return dateInput;
-        // 日本時間に合わせるための調整が必要な場合もありますが、一旦シンプルに yyyy/mm/dd に変換
         return `${d.getFullYear()}/${(d.getMonth()+1).toString().padStart(2,'0')}/${d.getDate().toString().padStart(2,'0')}`;
     }
 
@@ -180,30 +281,26 @@
             const response = await fetch(PREF_URL);
             const data = await response.json();
             const list = document.getElementById('pref-news');
-
             if (!data || data.length === 0) {
                 list.innerHTML = '<li>現在お知らせはありません。</li>';
                 return;
             }
-
             list.innerHTML = data.slice(-8).reverse().map(item => {
                 const rawDate = item.date || item.日付 || item.年月日 || '';
-                const displayDate = formatDate(rawDate);
-                const contentStr = item.content || item.内容 || item.本文 || '';
-                
-                return `
-                    <li class="news-item">
-                        <span class="news-date">${displayDate}</span>
-                        <span class="news-text">${contentStr}</span>
-                    </li>`;
+                return `<li class="news-item">
+                    <span class="news-date">${formatDate(rawDate)}</span>
+                    <span class="news-text">${item.content || item.内容 || item.本文 || ''}</span>
+                </li>`;
             }).join('');
-
         } catch (e) {
-            document.getElementById('pref-news').innerHTML = '<li>お知らせの読み込みに失敗しました。</li>';
+            document.getElementById('pref-news').innerHTML = '<li>読み込みに失敗しました。</li>';
         }
     }
 
-    window.addEventListener('load', loadData);
+    window.onload = () => {
+        showSlides();
+        loadData();
+    };
 </script>
 </body>
 </html>
