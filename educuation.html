@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子育て・教育 - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f4f7f4; /* 教育向けに少し優しい緑がかった白 */
+            --text-color: #333;
+            --white: #ffffff;
+            --accent-green: #2e7d32; /* 成長をイメージした緑 */
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- トップバー：共通構造を維持 --- */
+        header {
+            background: var(--main-color);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--white);
+        }
+        
+        .logo-area img { height: 45px; }
+        .logo-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
+
+        .main-nav { 
+            display: flex; 
+            list-style: none; 
+            margin: 0; 
+            padding: 0;
+            gap: 5px;
+        }
+
+        .nav-item {
+            padding: 10px 15px;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        /* --- 独自の2カラム構造 --- */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            display: flex;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        /* 左側：サイドナビ */
+        .side-menu {
+            flex: 0 0 260px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .side-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-green);
+        }
+
+        .side-card h2 {
+            font-size: 18px;
+            margin-top: 0;
+            color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .side-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .side-nav-list li a {
+            display: block;
+            padding: 12px 10px;
+            text-decoration: none;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+
+        .side-nav-list li a:hover {
+            background: #f0f9f0;
+            color: var(--accent-green);
+            padding-left: 15px;
+        }
+
+        /* 右側：メインコンテンツ */
+        .main-content {
+            flex: 1;
+        }
+
+        .edu-section {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: var(--accent-green);
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-header h3 { margin: 0; font-size: 1.2rem; }
+
+        .grid-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding: 20px;
+            gap: 15px;
+        }
+
+        .grid-links a {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .grid-links a:hover {
+            border-color: var(--accent-green);
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 850px) {
+            .container { flex-direction: column; }
+            .side-menu { flex: none; width: 100%; position: static; }
+            .grid-links { grid-template-columns: 1fr; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #777;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <nav class="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <!-- サイド：クイックメニュー -->
+    <aside class="side-menu">
+        <div class="side-card">
+            <h2>メニュー</h2>
+            <ul class="side-nav-list">
+                <li><a href="#kosodate">子育て支援</a></li>
+                <li><a href="#school">学校・教育</a></li>
+                <li><a href="#lifelong">生涯学習・文化</a></li>
+                <li><a href="#youth">青少年健全育成</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- メイン：カテゴリー詳細 -->
+    <main class="main-content">
+        <!-- 子育て支援 -->
+        <section id="kosodate" class="edu-section">
+            <div class="section-header">
+                <h3>子育て支援</h3>
+            </div>
+            <div class="grid-links">
+                <a href="jidou-teate.html">児童手当・各種助成</a>
+                <a href="hoiku-check.html">保育園の空き状況</a>
+                <a href="sick-care.html">病児・病後児保育</a>
+                <a href="mother-child.html">母子保健・健診</a>
+            </div>
+        </section>
+
+        <!-- 学校・教育 -->
+        <section id="school" class="edu-section">
+            <div class="section-header">
+                <h3>学校・教育</h3>
+            </div>
+            <div class="grid-links">
+                <a href="admission.html">小・中学校への入学</a>
+                <a href="exam-info.html">県立高校入試情報</a>
+                <a href="school-lunch.html">学校給食について</a>
+                <a href="scholarship.html">奨学金・就学援助</a>
+            </div>
+        </section>
+
+        <!-- 生涯学習 -->
+        <section id="lifelong" class="edu-section">
+            <div class="section-header">
+                <h3>生涯学習・文化</h3>
+            </div>
+            <div class="grid-links">
+                <a href="library.html">県立図書館の利用</a>
+                <a href="museum.html">博物館・美術館</a>
+                <a href="sports.html">スポーツ施設の予約</a>
+                <a href="lecture.html">市民公開講座</a>
+            </div>
+        </section>
+    </main>
+</div>
+
+<footer>
+    &copy; 大山県 Oyama Prefecture
+</footer>
+
+</body>
+</html>
