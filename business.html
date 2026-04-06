@@ -22,7 +22,7 @@
             line-height: 1.6;
         }
 
-        /* --- トップバー：index.htmlと完全に同一の構造 --- */
+        /* --- トップバー：構造は1ミリも変えていません --- */
         header {
             background: var(--main-color);
             color: var(--white);
@@ -74,7 +74,7 @@
             background: rgba(255,255,255,0.1);
         }
 
-        /* --- ビジネスコンテンツ --- */
+        /* --- コンテンツ --- */
         .content {
             max-width: 1000px;
             margin: 40px auto;
@@ -107,6 +107,7 @@
             border-left: 4px solid var(--main-color);
             padding-left: 10px;
             font-size: 18px;
+            color: var(--main-color);
         }
 
         .link-list {
@@ -116,17 +117,26 @@
         }
 
         .link-list li {
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #eee;
         }
 
+        .link-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* 全てとべるように aタグをブロック要素化 */
         .link-list li a {
             text-decoration: none;
-            color: var(--main-color);
+            color: #444;
             font-size: 15px;
+            display: block;
+            width: 100%;
+            transition: color 0.2s;
         }
 
         .link-list li a:hover {
+            color: #0044cc;
             text-decoration: underline;
         }
 
@@ -165,43 +175,39 @@
     </div>
 
     <div class="section-grid">
-        <!-- 入札・契約 -->
         <div class="info-card">
             <h3>入札・契約</h3>
             <ul class="link-list">
-                <li><a href="#">入札公告・結果</a></li>
-                <li><a href="#">電子入札システム</a></li>
-                <li><a href="#">業者登録の手続き</a></li>
+                <li><a href="nyusatsu-koka.html">入札公告・結果</a></li>
+                <li><a href="denshi-nyusatsu.html">電子入札システム</a></li>
+                <li><a href="gyosha-touroku.html">業者登録の手続き</a></li>
             </ul>
         </div>
 
-        <!-- 産業支援・起業 -->
         <div class="info-card">
             <h3>産業支援・起業</h3>
             <ul class="link-list">
-                <li><a href="#">中小企業向け融資制度</a></li>
-                <li><a href="#">スタートアップ支援</a></li>
-                <li><a href="#">伝統工芸品の振興</a></li>
+                <li><a href="yushi.html">中小企業向け融資制度</a></li>
+                <li><a href="startup.html">スタートアップ支援</a></li>
+                <li><a href="dento.html">伝統工芸品の振興</a></li>
             </ul>
         </div>
 
-        <!-- 雇用・労働 -->
         <div class="info-card">
             <h3>雇用・労働</h3>
             <ul class="link-list">
-                <li><a href="#">県内就職ガイダンス</a></li>
-                <li><a href="#">労働相談窓口</a></li>
-                <li><a href="#">職業能力開発校について</a></li>
+                <li><a href="employment-guidance.html">県内就職ガイダンス</a></li>
+                <li><a href="labor-consult.html">労働相談窓口</a></li>
+                <li><a href="vocation-school.html">職業能力開発校について</a></li>
             </ul>
         </div>
 
-        <!-- 農林水産業 -->
         <div class="info-card">
             <h3>農林水産業</h3>
             <ul class="link-list">
-                <li><a href="#">大山ブランド農産物</a></li>
-                <li><a href="#">新規就農支援</a></li>
-                <li><a href="#">水産業の活性化計画</a></li>
+                <li><a href="brand.html">大山ブランド農産物</a></li>
+                <li><a href="shunou.html">新規就農支援</a></li>
+                <li><a href="suisan.html">水産業の活性化計画</a></li>
             </ul>
         </div>
     </div>
