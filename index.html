@@ -22,7 +22,6 @@
             line-height: 1.6;
         }
 
-        /* --- トップバー：構造は絶対変えていません --- */
         header {
             background: var(--main-color);
             color: var(--white);
@@ -75,14 +74,13 @@
             background: rgba(255,255,255,0.1);
         }
 
-        /* --- スライドショーエリア (北海道警風) --- */
         .slideshow-container {
             width: 100%;
             position: relative;
             margin: 0 auto;
             overflow: hidden;
             background-color: #000;
-            height: 450px; /* 必要に応じて調整 */
+            height: 450px;
         }
 
         .mySlides {
@@ -130,7 +128,6 @@
             from {opacity: .6} to {opacity: 1}
         }
 
-        /* --- お知らせエリア --- */
         .content {
             max-width: 900px;
             margin: 40px auto;
@@ -187,18 +184,18 @@
             <h1>大山県</h1>
         </a>
         <nav class="main-nav">
-            <a href="#" class="nav-item">くらし・手続き</a>
-            <a href="#" class="nav-item">子育て・教育</a>
-            <a href="#" class="nav-item">健康・福祉</a>
-            <a href="#" class="nav-item">観光・魅力</a>
-            <a href="#" class="nav-item">ビジネス・産業</a>
+            <!-- リンク先をそれぞれのHTMLファイルに設定 -->
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
             <a href="fire.html" class="nav-item">防災情報</a>
             <a href="recruit.html" class="nav-item">採用案内</a>
         </nav>
     </div>
 </header>
 
-<!-- スライドショー -->
 <div class="slideshow-container">
     <div class="mySlides fade">
         <img src="gazou1.png" alt="スライド1">
@@ -227,7 +224,6 @@
 </main>
 
 <script>
-    // スライドショー制御
     let slideIndex = 0;
     let slideTimer;
 
@@ -235,6 +231,7 @@
         let i;
         let slides = document.getElementsByClassName("mySlides");
         let dots = document.getElementsByClassName("dot");
+        if (slides.length === 0) return;
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";  
         }
@@ -245,7 +242,7 @@
         }
         slides[slideIndex-1].style.display = "block";  
         dots[slideIndex-1].className += " active";
-        slideTimer = setTimeout(showSlides, 5000); // 5秒ごとに切り替え
+        slideTimer = setTimeout(showSlides, 5000);
     }
 
     function currentSlide(n) {
@@ -266,7 +263,6 @@
         slideTimer = setTimeout(showSlides, 5000);
     }
 
-    // お知らせ取得
     const PREF_URL = "https://script.google.com/macros/s/AKfycbzV3q-FCNPrXhRlHrdi5s4X7_R4rkLlnMZUw-xyG9wMSyyJ6HrP-UHyMsvv2Hz1rQQH/exec";
 
     function formatDate(dateInput) {
@@ -285,7 +281,8 @@
                 list.innerHTML = '<li>現在お知らせはありません。</li>';
                 return;
             }
-            list.innerHTML = data.slice(-8).reverse().map(item => {
+            // slice(-10) で最新の10件を取得
+            list.innerHTML = data.slice(-10).reverse().map(item => {
                 const rawDate = item.date || item.日付 || item.年月日 || '';
                 return `<li class="news-item">
                     <span class="news-date">${formatDate(rawDate)}</span>
