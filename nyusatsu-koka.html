@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入札公告・結果 - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #ffffff;
+            --text-color: #333;
+            --border-color: #eee;
+            --finish-color: #999; /* 終了済みを強調する薄いグレー */
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+        }
+
+        /* --- ヘッダー（共通） --- */
+        header { background: var(--main-color); color: white; position: sticky; top: 0; z-index: 1000; }
+        .header-container { width: 100%; display: flex; align-items: center; justify-content: space-between; height: 70px; padding: 0 30px; box-sizing: border-box; }
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
+        .logo-area img { height: 45px; }
+        .logo-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: white; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        /* --- 独自のアーカイブ・リスト構造 --- */
+        .content {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            margin-bottom: 50px;
+            border-bottom: 1px solid var(--main-color);
+            display: inline-block;
+        }
+
+        .page-header h2 {
+            font-size: 22px;
+            margin: 0 0 5px 0;
+            color: var(--main-color);
+        }
+
+        .tender-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tender-item {
+            display: flex;
+            align-items: center;
+            padding: 22px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* 終了済みなので少しトーンを落とす */
+        .date {
+            flex: 0 0 110px;
+            font-size: 14px;
+            color: var(--finish-color);
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        .title-link {
+            flex: 1;
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .title-link:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .status-tag {
+            font-size: 11px;
+            border: 1px solid var(--finish-color);
+            padding: 2px 8px;
+            margin-left: 15px;
+            color: var(--finish-color);
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 600px) {
+            .tender-item { flex-direction: column; align-items: flex-start; }
+            .date { margin-bottom: 8px; }
+            .status-tag { margin-left: 0; margin-top: 10px; }
+        }
+
+        footer { text-align: center; padding: 100px 0 40px; color: #ccc; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <nav class="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <div class="page-header">
+        <h2>入札公告・結果（アーカイブ）</h2>
+    </div>
+
+    <ul class="tender-list">
+        <li class="tender-item">
+            <span class="date">2026.04.07</span>
+            <a href="#" class="title-link">大山県庁舎ネットワーク機器更新業務</a>
+            <span class="status-tag">終了</span>
+        </li>
+        <li class="tender-item">
+            <span class="date">2026.04.05</span>
+            <a href="#" class="title-link">県立大山公園管理棟改修工事（建築）</a>
+            <span class="status-tag">終了</span>
+        </li>
+        <li class="tender-item">
+            <span class="date">2026.03.28</span>
+            <a href="#" class="title-link">公用車（電気自動車）購入（単価契約）の結果について</a>
+            <span class="status-tag">終了</span>
+        </li>
+        <li class="tender-item">
+            <span class="date">2026.03.20</span>
+            <a href="#" class="title-link">県立図書館図書搬送業務委託の結果について</a>
+            <span class="status-tag">終了</span>
+        </li>
+        <li class="tender-item">
+            <span class="date">2026.03.15</span>
+            <a href="#" class="title-link">大山県庁内食堂運営事業者の公募</a>
+            <span class="status-tag">終了</span>
+        </li>
+    </ul>
+</main>
+
+<footer>
+    &copy; 大山県 Oyama Prefecture
+</footer>
+
+</body>
+</html>
