@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>観光・魅力 - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f8f9fa;
+            --text-color: #333;
+            --white: #ffffff;
+            --accent-gold: #c5a059;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- ヘッダー（共通） --- */
+        header { background: var(--main-color); color: var(--white); width: 100%; }
+        .header-container { width: 100%; display: flex; align-items: center; justify-content: space-between; height: 70px; padding: 0 30px; box-sizing: border-box; }
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); }
+        .logo-area img { height: 45px; }
+        .logo-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        /* --- 準備中コンテンツ（独自の全画面中央配置） --- */
+        .coming-soon-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .message-box {
+            max-width: 600px;
+            padding: 60px 40px;
+            background: var(--white);
+            border-radius: 2px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--accent-gold);
+        }
+
+        .message-box h2 {
+            font-size: 28px;
+            letter-spacing: 0.2em;
+            margin: 0 0 20px 0;
+            color: var(--main-color);
+        }
+
+        .message-box p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .loading-bar {
+            width: 100px;
+            height: 2px;
+            background: #eee;
+            margin: 0 auto 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-bar::after {
+            content: "";
+            position: absolute;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gold);
+            animation: loading 2s infinite ease-in-out;
+        }
+
+        @keyframes loading {
+            0% { left: -100%; }
+            50% { left: 0; }
+            100% { left: 100%; }
+        }
+
+        .back-home {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--accent-gold);
+            font-weight: bold;
+            font-size: 14px;
+            border: 1px solid var(--accent-gold);
+            padding: 10px 30px;
+            transition: all 0.3s;
+        }
+
+        .back-home:hover {
+            background: var(--accent-gold);
+            color: white;
+        }
+
+        footer { text-align: center; padding: 30px 0; color: #777; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <nav class="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<div class="coming-soon-container">
+    <div class="message-box">
+        <h2>UNDER CONSTRUCTION</h2>
+        <div class="loading-bar"></div>
+        <p>「観光・魅力」のページは、現在準備中です。<br>公開まで今しばらくお待ちください。</p>
+        <a href="index.html" class="back-home">トップページへ戻る</a>
+    </div>
+</div>
+
+<footer>
+    &copy; 大山県 Oyama Prefecture
+</footer>
+
+</body>
+</html>
