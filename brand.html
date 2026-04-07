@@ -26,6 +26,7 @@
         header { background: var(--main-color); color: white; position: sticky; top: 0; z-index: 1000; font-family: sans-serif; }
         .header-container { width: 100%; display: flex; align-items: center; justify-content: space-between; height: 70px; padding: 0 30px; box-sizing: border-box; }
         .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
+        /* ロゴ画像がない場合はテキストのみ表示されます */
         .logo-area img { height: 45px; }
         .logo-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
         .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
@@ -51,7 +52,7 @@
             margin-bottom: 20px;
         }
 
-        /* 交互に並ぶセクション */
+        /* 項目セクション */
         .brand-item {
             display: flex;
             align-items: center;
@@ -63,6 +64,7 @@
             flex-direction: row-reverse;
         }
 
+        /* 画像エリア */
         .brand-visual {
             flex: 1;
             aspect-ratio: 4/3;
@@ -74,6 +76,14 @@
             font-size: 14px;
             letter-spacing: 2px;
             border: 1px solid #ddd;
+            overflow: hidden; /* 画像がはみ出ないように */
+        }
+
+        /* 生成された画像をフィットさせる */
+        .brand-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 枠いっぱいに表示 */
         }
 
         .brand-text {
@@ -105,6 +115,7 @@
         @media (max-width: 768px) {
             .brand-item, .brand-item:nth-child(even) { flex-direction: column; gap: 30px; }
             .brand-container { margin: 40px auto; padding: 0 20px; }
+            .brand-visual { aspect-ratio: 1/1; width: 100%; } /* スマホでは正方形に近く */
         }
 
         footer { text-align: center; padding: 60px 0; color: #bbb; font-size: 12px; font-family: sans-serif; }
@@ -136,9 +147,10 @@
         <p>豊かな土壌と清らかな水、そして人の手が生み出す<br>大山県が世界に誇る名産品の数々。</p>
     </div>
 
-    <!-- 大山米 -->
     <section class="brand-item">
-        <div class="brand-visual">OYAMA RICE IMAGE</div>
+        <div class="brand-visual">
+            <img src="OyamaMai.png" alt="天恵大山米「極」のパッケージ">
+        </div>
         <div class="brand-text">
             <span class="category">RICE / 特選米</span>
             <h3>天恵大山米「極」</h3>
@@ -146,7 +158,6 @@
         </div>
     </section>
 
-    <!-- 大山和牛 -->
     <section class="brand-item">
         <div class="brand-visual">OYAMA BEEF IMAGE</div>
         <div class="brand-text">
@@ -156,7 +167,6 @@
         </div>
     </section>
 
-    <!-- 大山和紙 -->
     <section class="brand-item">
         <div class="brand-visual">TRADITION IMAGE</div>
         <div class="brand-text">
