@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大山ブランド - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-paper: #fafafa;
+            --text-color: #2c3e50;
+            --accent-gold: #b89a67;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: "Georgia", "游明朝", "YuMincho", "Hiragino Mincho ProN", serif;
+            margin: 0;
+            background-color: var(--bg-paper);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        /* --- ヘッダー（共通） --- */
+        header { background: var(--main-color); color: white; position: sticky; top: 0; z-index: 1000; font-family: sans-serif; }
+        .header-container { width: 100%; display: flex; align-items: center; justify-content: space-between; height: 70px; padding: 0 30px; box-sizing: border-box; }
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
+        .logo-area img { height: 45px; }
+        .logo-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: white; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        /* --- 独自のマガジンレイアウト --- */
+        .brand-container {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        .brand-intro {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .brand-intro h2 {
+            font-size: 32px;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        /* 交互に並ぶセクション */
+        .brand-item {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 120px;
+        }
+
+        .brand-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .brand-visual {
+            flex: 1;
+            aspect-ratio: 4/3;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            letter-spacing: 2px;
+            border: 1px solid #ddd;
+        }
+
+        .brand-text {
+            flex: 1;
+        }
+
+        .brand-text .category {
+            font-family: sans-serif;
+            font-size: 12px;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .brand-text h3 {
+            font-size: 28px;
+            margin: 0 0 20px 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .brand-text p {
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+            .brand-item, .brand-item:nth-child(even) { flex-direction: column; gap: 30px; }
+            .brand-container { margin: 40px auto; padding: 0 20px; }
+        }
+
+        footer { text-align: center; padding: 60px 0; color: #bbb; font-size: 12px; font-family: sans-serif; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <nav class="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<main class="brand-container">
+    <div class="brand-intro">
+        <h2>大山の至宝</h2>
+        <p>豊かな土壌と清らかな水、そして人の手が生み出す<br>大山県が世界に誇る名産品の数々。</p>
+    </div>
+
+    <!-- 大山米 -->
+    <section class="brand-item">
+        <div class="brand-visual">OYAMA RICE IMAGE</div>
+        <div class="brand-text">
+            <span class="category">RICE / 特選米</span>
+            <h3>天恵大山米「極」</h3>
+            <p>大山山脈から流れ出すミネラル豊富な雪解け水で育てられた最高級ブランド米。粘り、甘み、香りの三拍子が揃い、炊きあがりの輝きはまさに「天の恵み」と称されています。</p>
+        </div>
+    </section>
+
+    <!-- 大山和牛 -->
+    <section class="brand-item">
+        <div class="brand-visual">OYAMA BEEF IMAGE</div>
+        <div class="brand-text">
+            <span class="category">BEEF / 和牛</span>
+            <h3>大山翡翠和牛</h3>
+            <p>厳選された飼料とストレスのない環境で育てられた「大山翡翠和牛」。きめ細やかなサシと、口の中でとろけるような脂の甘みが特徴です。数々の品評会で金賞を受賞した逸品です。</p>
+        </div>
+    </section>
+
+    <!-- 大山和紙 -->
+    <section class="brand-item">
+        <div class="brand-visual">TRADITION IMAGE</div>
+        <div class="brand-text">
+            <span class="category">CRAFT / 伝統工芸</span>
+            <h3>大山手漉き和紙</h3>
+            <p>八百年の歴史を持つ大山和紙。強靭でありながら、肌触りはどこまでも柔らかく。職人が一枚一枚丁寧に漉き上げる和紙は、国内外のアーティストからも高い評価を得ています。</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 大山県 Oyama Prefecture
+</footer>
+
+</body>
+</html>
