@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防災情報 - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --accent-blue: #34495e;
+            --soft-gray: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            background-color: var(--soft-gray);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- ヘッダー（共通） --- */
+        header { background: var(--main-color); color: var(--white); position: sticky; top: 0; z-index: 1000; }
+        .header-container { width: 100%; display: flex; align-items: center; justify-content: space-between; height: 70px; padding: 0 30px; box-sizing: border-box; }
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); }
+        .logo-area img { height: 45px; }
+        .logo-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        /* --- 防災ページ：落ち着いた「備え」のレイアウト --- */
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            border-bottom: 2px solid var(--main-color);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+
+        .hero-title h2 { margin: 0; color: var(--main-color); }
+
+        /* 特設リンク：県警HP */
+        .police-banner {
+            background: #fff;
+            border: 2px solid #2980b9;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .police-banner:hover { background: #ebf5fb; }
+
+        /* セクション構造 */
+        .prep-card {
+            background: var(--white);
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .prep-card h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+        }
+
+        .prep-card h3::before {
+            content: "■";
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        .prep-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .prep-list li a {
+            display: block;
+            background: #f1f1f1;
+            padding: 15px;
+            text-decoration: none;
+            color: #444;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+
+        .prep-list li a:hover {
+            background: #e0e0e0;
+            color: #000;
+        }
+
+        footer { text-align: center; padding: 60px 0; color: #777; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <nav class="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <div class="hero-title">
+        <h2>防災・安全情報</h2>
+    </div>
+
+    <!-- 県警HPへの特設リンク -->
+    <a href="https://oyama-prefectural-police.github.io" class="police-banner" target="_blank">
+        大山県警察本部 ホームページ ↗
+        <span style="font-size: 12px; font-weight: normal;">(外部サイトへ移動します)</span>
+    </a>
+
+    <!-- 日頃の備えセクション -->
+    <section class="prep-card">
+        <h3>日頃からの備え</h3>
+        <p>災害が発生した際に落ち着いて行動できるよう、ご家庭や職場で事前の準備をお願いします。</p>
+        <ul class="prep-list">
+            <li><a href="stock.html">非常用持ち出し品の確認</a></li>
+            <li><a href="furniture.html">家具の固定・転倒防止</a></li>
+            <li><a href="family.html">家族との連絡手段を決める</a></li>
+            <li><a href="manual.html">大山県防災ハンドブック</a></li>
+            <li><a href="radio.html">災害情報の入手手段一覧</a></li>
+            <li><a href="stockpile.html">家庭内備蓄（3日分以上）</a></li>
+        </ul>
+    </section>
+
+    <!-- 防犯・安全セクション -->
+    <section class="prep-card">
+        <h3>防犯・地域の安全</h3>
+        <ul class="prep-list">
+            <li><a href="safety-town.html">地域の安全マップ</a></li>
+            <li><a href="crime-prevention.html">特殊詐欺にご注意ください</a></li>
+            <li><a href="volunteer.html">防犯ボランティア活動</a></li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    &copy; 大山県 Oyama Prefecture
+</footer>
+
+</body>
+</html>
