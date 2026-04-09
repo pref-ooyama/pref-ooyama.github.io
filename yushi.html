@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中小企業向け融資制度 - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f0f2f5;
+            --text-color: #333;
+            --white: #ffffff;
+            --border-color: #ddd;
+            --accent-blue: #0033cc;
+            --oyama-orange: #f39c12;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            background: var(--main-color);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--white);
+        }
+        .logo-area img { height: 35px; }
+        .logo-area h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
+
+        .nav-toggle { display: none; cursor: pointer; background: none; border: none; padding: 10px; }
+        .nav-toggle span { display: block; width: 25px; height: 2px; background: var(--white); margin: 6px 0; }
+
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        @media (max-width: 1024px) {
+            .nav-toggle { display: block; }
+            .main-nav { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: var(--main-color); flex-direction: column; justify-content: center; align-items: center; transition: 0.4s; gap: 20px; }
+            .main-nav.active { right: 0; }
+            .nav-item { font-size: 18px; width: 80%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+        }
+
+        /* --- メインコンテンツ --- */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .breadcrumb { font-size: 12px; margin-bottom: 15px; color: #666; }
+        .breadcrumb a { color: var(--accent-blue); text-decoration: none; }
+
+        .page-title {
+            font-size: 24px;
+            color: var(--main-color);
+            border-bottom: 3px solid var(--main-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .info-card h2 {
+            margin-top: 0;
+            font-size: 20px;
+            color: var(--main-color);
+            border-bottom: 2px solid var(--oyama-orange);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        table th, table td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+        table th {
+            background-color: #f8f9fa;
+        }
+
+        .highlight-box {
+            background: #fff9e6;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .btn-consult {
+            display: inline-block;
+            background: var(--oyama-orange);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-consult:hover { background: #e67e22; }
+
+        /* --- フッター --- */
+        footer {
+            background: #f8f9fa;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+        .footer-copy { font-weight: bold; color: var(--main-color); margin-bottom: 10px; }
+        .roblox-disclaimer { font-size: 12px; color: #777; line-height: 1.5; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <button class="nav-toggle" id="nav-toggle">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <div class="breadcrumb">
+        <a href="index.html">トップ</a> ＞ <a href="business.html">ビジネス・産業</a> ＞ 中小企業向け融資
+    </div>
+
+    <h1 class="page-title">大山県中小企業融資制度のご案内</h1>
+
+    <div class="highlight-box">
+        大山県では、県内中小企業の皆様の資金繰りを支援するため、金融機関や大山県信用保証協会と連携した「制度融資」を実施しています。
+    </div>
+
+    <section class="info-card">
+        <h2>主要な融資メニュー</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>資金名称</th>
+                    <th>融資限度額</th>
+                    <th>利率（年）</th>
+                    <th>融資期間</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>経営安定資金</strong><br>（運転・設備資金）</td>
+                    <td>8,000万円</td>
+                    <td>1.2% 〜 1.5%</td>
+                    <td>10年以内</td>
+                </tr>
+                <tr>
+                    <td><strong>創業支援資金</strong><br>（新しく事業を始める方）</td>
+                    <td>3,000万円</td>
+                    <td>1.0%固定</td>
+                    <td>7年以内</td>
+                </tr>
+                <tr>
+                    <td><strong>小規模企業活性化資金</strong></td>
+                    <td>2,000万円</td>
+                    <td>1.1%</td>
+                    <td>5年以内</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="info-card">
+        <h2>融資までの流れ</h2>
+        <ol style="font-size: 15px;">
+            <li><strong>相談：</strong> お近くの取扱金融機関（銀行・信金・信組）へご相談ください。</li>
+            <li><strong>申込：</strong> 金融機関を通じて、県信用保証協会へ保証申込みを行います。</li>
+            <li><strong>審査：</strong> 保証協会および金融機関による審査が行われます。</li>
+            <li><strong>実行：</strong> 審査承認後、金融機関から融資が実行されます。</li>
+        </ol>
+    </section>
+
+    <section class="info-card" style="text-align: center;">
+        <h2>経営・資金繰り相談窓口</h2>
+        <p>「どの融資が自分に合っているか分からない」「事業計画の立て方を相談したい」といったお悩みにお答えします。</p>
+        <p style="font-weight: bold; color: var(--oyama-orange);">大山県中小企業支援センター：012-999-XXXX</p>
+        <a href="consultation-form.html" class="btn-consult">オンライン相談予約</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-copy">&copy; <span id="footer-year"></span> 大山県 Oyama Prefecture</div>
+    <div class="roblox-disclaimer">
+        ※本サイトは大山県（架空）の広報を目的とした、Roblox（ロブロックス）上の体験に関するウェブサイトです。<br>
+        実在の融資制度や金融機関とは一切関係ありません。
+    </div>
+</footer>
+
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('open');
+        mainNav.classList.toggle('active');
+    });
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
