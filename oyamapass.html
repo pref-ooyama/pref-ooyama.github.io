@@ -23,7 +23,7 @@
             line-height: 1.6;
         }
 
-        /* --- ヘッダー (共通デザイン) --- */
+        /* --- ヘッダー --- */
         header {
             background: var(--main-color);
             color: var(--white);
@@ -82,7 +82,6 @@
             margin-bottom: 25px;
         }
 
-        /* パスの紹介エリア */
         .pass-hero {
             background: var(--white);
             border-radius: 8px;
@@ -107,11 +106,11 @@
             font-size: 20px;
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            letter-spacing: 2px;
         }
         .pass-description { flex: 2; min-width: 280px; }
         .pass-description h2 { margin-top: 0; color: var(--main-color); }
 
-        /* 特徴・メリット */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -127,7 +126,6 @@
         }
         .feature-card h3 { margin-top: 0; font-size: 18px; color: var(--main-color); }
 
-        /* 手続きの流れ */
         .flow-box {
             background: #eef1f6;
             padding: 25px;
@@ -138,8 +136,9 @@
             display: flex;
             align-items: flex-start;
             gap: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
+        .flow-step:last-child { margin-bottom: 0; }
         .step-num {
             background: var(--main-color);
             color: white;
@@ -210,32 +209,30 @@
     <h1 class="page-title">おおやまパス（県民ICカード）</h1>
 
     <section class="pass-hero">
-        <div class="pass-image">
-            OYAMA PASS
-        </div>
+        <div class="pass-image">OYAMA PASS</div>
         <div class="pass-description">
             <h2>これ一枚で、大山県をもっと便利に。</h2>
-            <p>「おおやまパス」は、大山県民の利便性向上を目的とした多機能型ICカードです。身分証明書としての機能はもちろん、県営交通の利用や公共施設の入場など、県内あらゆる場面で活用いただけます。</p>
+            <p>おおやまパスは、大山県民の利便性向上を目的とした多機能型ICカードです。身分証明書としての機能はもちろん、県営交通の利用や公共施設の入場など、県内あらゆる場面で活用いただけます。</p>
         </div>
     </section>
 
     <div class="feature-grid">
         <div class="feature-card">
-            <h3>🪪 公式な身分証明</h3>
+            <h3>公式な身分証明</h3>
             <p>大山県内における公式な身分証として利用可能です。検問や公的な手続きの際に提示が必要となります。</p>
         </div>
         <div class="feature-card">
-            <h3>🚌 交通機関との連携</h3>
+            <h3>交通機関との連携</h3>
             <p>県営鉄道・バスの運賃支払いに対応。チャージ式の「OYAMAマネー」を利用することでスムーズに乗車できます。</p>
         </div>
         <div class="feature-card">
-            <h3>🏢 公共施設の利用</h3>
+            <h3>公共施設の利用</h3>
             <p>県立図書館、体育館、役場などの施設入館証として機能します。提示することで県民割引が適用されます。</p>
         </div>
     </div>
 
-    <section class="info-card" style="background:white; padding:25px; border-radius:8px; margin-bottom:30px;">
-        <h2 style="color:var(--main-color); border-bottom:1px solid #eee; padding-bottom:10px;">申請手続きの流れ</h2>
+    <section style="background:white; padding:25px; border-radius:8px; margin-bottom:30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <h2 style="color:var(--main-color); border-bottom:1px solid #eee; padding-bottom:10px; font-size: 20px;">申請手続きの流れ</h2>
         <div class="flow-box">
             <div class="flow-step">
                 <div class="step-num">1</div>
@@ -244,10 +241,6 @@
             <div class="flow-step">
                 <div class="step-num">2</div>
                 <div><strong>審査・データ登録</strong><br>県庁担当部署にて住民登録情報の確認・審査を行います。</div>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">3</div>
-                <div><strong>カードの交付（ツール配布）</strong><br>審査完了後、ゲーム内または公式ツールとして配布されます。</div>
             </div>
         </div>
         
@@ -262,7 +255,7 @@
     <div class="footer-copy">&copy; 2026 大山県 Oyama Prefecture</div>
     <div class="roblox-disclaimer">
         ※本サイトは大山県（架空）の広報を目的とした、Roblox（ロブロックス）上の体験に関するウェブサイトです。<br>
-        「おおやまパス」はゲーム内アイテムであり、実在のICカードやマイナンバーカードとは一切関係ありません。
+        おおやまパスはゲーム内アイテムであり、実在のICカードやマイナンバーカードとは一切関係ありません。
     </div>
 </footer>
 
