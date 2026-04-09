@@ -13,6 +13,7 @@
             --white: #ffffff;
             --border-color: #ddd;
             --accent-blue: #4a4a6a;
+            --link-blue: #0033cc; /* 画像のようなリンクの色 */
         }
 
         body {
@@ -23,7 +24,7 @@
             line-height: 1.6;
         }
 
-        /* --- Header & Nav --- */
+        /* --- ヘッダー --- */
         header {
             background: var(--main-color);
             color: var(--white);
@@ -50,11 +51,10 @@
             color: var(--white);
             z-index: 1100;
         }
-        
         .logo-area img { height: 35px; }
         .logo-area h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
 
-        /* ハンバーガーボタン */
+        /* --- ハンバーガーボタン --- */
         .nav-toggle {
             display: none;
             cursor: pointer;
@@ -63,7 +63,6 @@
             border: none;
             padding: 10px;
         }
-
         .nav-toggle span {
             display: block;
             width: 25px;
@@ -73,7 +72,7 @@
             transition: 0.3s;
         }
 
-        /* ナビゲーション */
+        /* --- ナビゲーション --- */
         .main-nav { 
             display: flex; 
             list-style: none; 
@@ -81,7 +80,6 @@
             padding: 0;
             gap: 5px;
         }
-
         .nav-item {
             padding: 10px 15px;
             color: var(--white);
@@ -89,12 +87,8 @@
             font-size: 13px;
             font-weight: bold;
             border-radius: 4px;
-            transition: 0.2s;
         }
 
-        .nav-item:hover { background: rgba(255,255,255,0.1); }
-
-        /* スマホ対応設定 */
         @media (max-width: 1024px) {
             .nav-toggle { display: block; }
             .main-nav {
@@ -109,7 +103,6 @@
                 align-items: center;
                 transition: 0.4s;
                 gap: 15px;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
             }
             .main-nav.active { right: 0; }
             .nav-item { font-size: 18px; width: 85%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
@@ -118,48 +111,66 @@
             .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
 
-        /* --- Content Area --- */
+        /* --- メインコンテンツ --- */
         .content {
             max-width: 800px;
             margin: 20px auto;
             padding: 0 15px;
-            min-height: 60vh;
         }
 
         .hero-banner {
             background: var(--accent-blue);
             color: var(--white);
-            padding: 40px 20px;
+            padding: 30px 20px;
             border-radius: 8px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-align: center;
         }
 
         .info-card {
             background: var(--white);
-            padding: 25px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             margin-bottom: 20px;
-            border-left: 8px solid var(--accent-blue);
+            border-left: 6px solid var(--accent-blue);
         }
 
-        .info-card h3 { margin: 0 0 15px 0; color: var(--main-color); }
+        .info-card h3 {
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            color: var(--main-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
 
-        .link-list { list-style: none; padding: 0; }
-        .link-list li { border-bottom: 1px solid #eee; padding: 12px 0; }
-        .link-list li a { text-decoration: none; color: #0044cc; font-weight: bold; }
-        .link-list li a:hover { text-decoration: underline; }
+        /* --- 画像のような青下線リンクのスタイル --- */
+        .link-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .link-list li {
+            padding: 8px 0;
+        }
+        .link-list li a {
+            color: var(--link-blue);
+            text-decoration: underline; /* 下線を表示 */
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .link-list li a:hover {
+            color: #ff6600; /* ホバー時に色を変える（お好みで） */
+        }
 
-        /* --- Footer --- */
+        /* --- フッター --- */
         footer {
             background: #f8f9fa;
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
             border-top: 1px solid var(--border-color);
-            margin-top: 50px;
+            margin-top: 40px;
         }
-
         .roblox-disclaimer { font-size: 11px; color: #777; line-height: 1.5; margin-top: 10px; }
     </style>
 </head>
@@ -189,41 +200,39 @@
 <main class="content">
     <div class="hero-banner">
         <h2 style="margin:0;">くらし・手続き</h2>
-        <p>大山県での生活に必要な独自の申請やルールをご案内します。</p>
     </div>
 
     <div class="info-card">
         <h3>身分証明・住民登録</h3>
         <ul class="link-list">
-            <li><a href="#">・おおやまパス（県民ICカード）の新規発行</a></li>
-            <li><a href="#">・大山県外（他鯖）からの転入届</a></li>
-            <li><a href="#">・名誉県民バッジの申請手続き</a></li>
+            <li><a href="oyatapass.html">・おおやまパス（県民ICカード）の新規発行</a></li>
+            <li><a href="badge.html">・名誉県民バッジの申請手続き</a></li>
         </ul>
     </div>
 
     <div class="info-card">
         <h3>税金・独自通貨「OYAMA」</h3>
         <ul class="link-list">
-            <li><a href="#">・県民税の支払い（Robux換算窓口）</a></li>
-            <li><a href="#">・大山県内限定通貨の発行・管理</a></li>
-            <li><a href="#">・大山振興募金への協力について</a></li>
+            <li><a href="tax.html">・県民税の支払いについて</a></li>
+            <li><a href="currency.html">・大山県内限定通貨の発行・管理</a></li>
+            <li><a href="donation.html">・大山振興募金への協力について</a></li>
         </ul>
     </div>
 
     <div class="info-card">
         <h3>住まい・ライフライン</h3>
         <ul class="link-list">
-            <li><a href="#">・県営「大山メタハイツ」入居申し込み</a></li>
-            <li><a href="#">・大山県式・ゴミ分別ガイド（24時間排出可）</a></li>
-            <li><a href="#">・土地所有権の電子登録について</a></li>
+            <li><a href="housing.html">・県営「大山メタハイツ」入居申し込み</a></li>
+            <li><a href="trash.html">・大山県式・ゴミ分別ガイド</a></li>
+            <li><a href="land.html">・土地所有権の電子登録について</a></li>
         </ul>
     </div>
 
     <div class="info-card">
         <h3>交通・車両登録</h3>
         <ul class="link-list">
-            <li><a href="#">・大山県内車両ナンバープレートの発行</a></li>
-            <li><a href="#">・大山県営鉄道・バスの定期券（おおやまパス連携）</a></li>
+            <li><a href="car.html">・大山県内車両ナンバープレートの発行</a></li>
+            <li><a href="ticket.html">・大山県営鉄道・バスの利用案内</a></li>
         </ul>
     </div>
 </main>
@@ -232,7 +241,7 @@
     <div style="font-weight:bold;">&copy; 2026 大山県 Oyama Prefecture</div>
     <div class="roblox-disclaimer">
         ※本サイトは大山県（架空）の広報を目的とした、Roblox（ロブロックス）上の体験に関するウェブサイトです。<br>
-        「おおやまパス」等の名称はすべてゲーム内の設定であり、実在の制度とは関係ありません。
+        実在の自治体や公共機関とは一切関係ありません。
     </div>
 </footer>
 
