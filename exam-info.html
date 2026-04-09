@@ -99,7 +99,6 @@
             margin-bottom: 20px;
         }
 
-        /* 予定表テーブル */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -173,27 +172,27 @@
     <h1 class="page-title">大山県立高等学校入学者選抜試験</h1>
 
     <div class="important-box">
-        <strong>注意：</strong> 令和8年度（2026年度）の出願はすべてオンライン申請となります。締切日時にご注意ください。
+        <strong>注意：</strong> <span class="current-year-text"></span>年度の出願はすべてオンライン申請となります。締切日時にご注意ください。
     </div>
 
     <section class="info-card">
-        <h2>令和8年度 入試日程</h2>
+        <h2><span class="current-year-text"></span>年度 入試日程</h2>
         <table>
             <tr>
                 <th>出願期間</th>
-                <td>2026年2月上旬 〜 2月中旬</td>
+                <td><span class="next-year-num"></span>年2月上旬 〜 2月中旬</td>
             </tr>
             <tr>
                 <th>学力検査（本試験）</th>
-                <td>2026年3月上旬</td>
+                <td><span class="next-year-num"></span>年3月上旬</td>
             </tr>
             <tr>
                 <th>合格発表</th>
-                <td>2026年3月中旬</td>
+                <td><span class="next-year-num"></span>年3月中旬</td>
             </tr>
             <tr>
                 <th>二次募集</th>
-                <td>2026年3月下旬</td>
+                <td><span class="next-year-num"></span>年3月下旬</td>
             </tr>
         </table>
     </section>
@@ -211,7 +210,7 @@
     <section class="info-card">
         <h2>関連リンク</h2>
         <ul class="link-list">
-            <li><a href="#">・令和8年度 大山県立高校定員一覧</a></li>
+            <li><a href="#">・<span class="current-year-text"></span>年度 大山県立高校定員一覧</a></li>
             <li><a href="#">・過去の学力検査問題と解答</a></li>
             <li><a href="#">・オンライン出願システム操作マニュアル</a></li>
         </ul>
@@ -219,7 +218,7 @@
 </main>
 
 <footer>
-    <div class="footer-copy">&copy; 2026 大山県 Oyama Prefecture</div>
+    <div class="footer-copy">&copy; <span id="footer-year"></span> 大山県 Oyama Prefecture</div>
     <div class="roblox-disclaimer">
         ※本サイトは大山県（架空）の広報を目的とした、Roblox（ロブロックス）上の体験に関するウェブサイトです。<br>
         実在の教育機関や入試制度とは一切関係ありません。
@@ -227,12 +226,47 @@
 </footer>
 
 <script>
+    // ハンバーガーメニュー
     const navToggle = document.getElementById('nav-toggle');
     const mainNav = document.getElementById('main-nav');
     navToggle.addEventListener('click', () => {
         navToggle.classList.toggle('open');
         mainNav.classList.toggle('active');
     });
+
+    // 日付自動更新スクリプト
+    function updateYear() {
+        const now = new Date();
+        const year = now.getFullYear(); // 西暦
+        const month = now.getMonth() + 1; // 月 (0-11なので+1)
+
+        // 年度計算（4月〜翌3月を1つの年度とする）
+        // 1月〜3月の場合は、西暦年-1が「年度」になる（例: 2026年3月は2025年度）
+        let academicYear = (month < 4) ? year - 1 : year;
+        
+        // 令和計算 (2019年が令和元年)
+        let reiwa = academicYear - 2018;
+
+        // 表示用テキスト作成
+        const yearDisplayText = `令和${reiwa}年度（${academicYear}年度）`;
+        
+        // ページ内の該当クラスをすべて書き換え
+        const yearElements = document.getElementsByClassName('current-year-text');
+        for (let el of yearElements) {
+            el.textContent = yearDisplayText;
+        }
+
+        // 試験が行われる年（基本は年度+1年の3月なので）
+        const nextYearElements = document.getElementsByClassName('next-year-num');
+        for (let el of nextYearElements) {
+            el.textContent = academicYear + 1;
+        }
+
+        // フッターのコピーライト年
+        document.getElementById('footer-year').textContent = year;
+    }
+
+    window.onload = updateYear;
 </script>
 </body>
 </html>
