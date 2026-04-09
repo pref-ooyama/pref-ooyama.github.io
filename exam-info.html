@@ -210,9 +210,9 @@
     <section class="info-card">
         <h2>関連リンク</h2>
         <ul class="link-list">
-            <li><a href="#">・<span class="current-year-text"></span>年度 大山県立高校定員一覧</a></li>
-            <li><a href="#">・過去の学力検査問題と解答</a></li>
-            <li><a href="#">・オンライン出願システム操作マニュアル</a></li>
+            <li><a href="highschool-capacity.html">・<span class="current-year-text"></span>年度 大山県立高校定員一覧</a></li>
+            <li><a href="past-exams.html">・過去の学力検査問題と解答</a></li>
+            <li><a href="entry-manual.html">・オンライン出願システム操作マニュアル</a></li>
         </ul>
     </section>
 </main>
@@ -237,32 +237,27 @@
     // 日付自動更新スクリプト
     function updateYear() {
         const now = new Date();
-        const year = now.getFullYear(); // 西暦
-        const month = now.getMonth() + 1; // 月 (0-11なので+1)
+        const year = now.getFullYear(); 
+        const month = now.getMonth() + 1; 
 
         // 年度計算（4月〜翌3月を1つの年度とする）
-        // 1月〜3月の場合は、西暦年-1が「年度」になる（例: 2026年3月は2025年度）
         let academicYear = (month < 4) ? year - 1 : year;
         
         // 令和計算 (2019年が令和元年)
         let reiwa = academicYear - 2018;
 
-        // 表示用テキスト作成
         const yearDisplayText = `令和${reiwa}年度（${academicYear}年度）`;
         
-        // ページ内の該当クラスをすべて書き換え
         const yearElements = document.getElementsByClassName('current-year-text');
         for (let el of yearElements) {
             el.textContent = yearDisplayText;
         }
 
-        // 試験が行われる年（基本は年度+1年の3月なので）
         const nextYearElements = document.getElementsByClassName('next-year-num');
         for (let el of nextYearElements) {
             el.textContent = academicYear + 1;
         }
 
-        // フッターのコピーライト年
         document.getElementById('footer-year').textContent = year;
     }
 
