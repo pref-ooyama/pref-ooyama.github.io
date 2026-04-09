@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防犯ボランティア - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f0f2f5;
+            --text-color: #333;
+            --white: #ffffff;
+            --border-color: #ddd;
+            --accent-blue: #0033cc;
+            --safety-yellow: #f1c40f;
+            --safety-orange: #e67e22;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- ヘッダー（スマホ対応） --- */
+        header {
+            background: var(--main-color);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--white);
+        }
+        .logo-area img { height: 35px; }
+        .logo-area h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        @media (max-width: 1024px) {
+            .nav-toggle { display: block; }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--main-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s;
+                gap: 20px;
+            }
+            .main-nav.active { right: 0; }
+            .nav-item { font-size: 18px; width: 80%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+        }
+
+        /* --- メインコンテンツ --- */
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            color: var(--main-color);
+            border-bottom: 3px solid var(--main-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, var(--safety-orange) 0%, var(--safety-yellow) 100%);
+            color: #232337;
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .hero-banner h2 { margin: 0; font-size: 26px; }
+
+        .info-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .info-card h2 {
+            margin-top: 0;
+            font-size: 20px;
+            color: var(--safety-orange);
+            border-bottom: 2px solid var(--safety-orange);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .activity-item {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 6px;
+            background: #fffdf9;
+        }
+        .activity-item h3 { margin-top: 0; color: var(--main-color); font-size: 18px; }
+
+        .highlight-box {
+            background: #fdf2f2;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        /* --- フッター --- */
+        footer {
+            background: #f8f9fa;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+        .footer-copy { font-weight: bold; color: var(--main-color); margin-bottom: 10px; }
+        .roblox-disclaimer { font-size: 12px; color: #777; line-height: 1.5; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <button class="nav-toggle" id="nav-toggle">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <div class="hero-banner">
+        <h2>地域の安全、みんなで守ろう。</h2>
+        <p>大山県では防犯ボランティアを募集・支援しています。</p>
+    </div>
+
+    <h1 class="page-title">防犯ボランティア活動について</h1>
+
+    <section class="info-card">
+        <h2>主な活動内容</h2>
+        <div class="activity-grid">
+            <div class="activity-item">
+                <h3>青色防犯パトロール</h3>
+                <p>青色回転灯を装備した車両（青パト）で地域を巡回し、犯罪の抑止力を高める活動です。</p>
+            </div>
+            <div class="activity-item">
+                <h3>子どもの見守り活動</h3>
+                <p>登下校の時間に合わせて通学路に立ち、子どもたちの安全を確保する「ながら防犯」です。</p>
+            </div>
+            <div class="activity-item">
+                <h3>環境浄化・声かけ</h3>
+                <p>公園や街灯の点検、落書き消し、地域住民への積極的な声かけ活動を行います。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-card">
+        <h2>ボランティアへの支援</h2>
+        <p>県では、活動を始める団体や個人のために、以下の支援を行っています。</p>
+        <ul style="font-size: 15px;">
+            <li><strong>防犯グッズの支給：</strong> 腕章、ベスト、懐中電灯などの無償貸与。</li>
+            <li><strong>防犯保険の加入支援：</strong> 活動中の事故に備えた保険料の補助。</li>
+            <li><strong>講習会の開催：</strong> 警察と連携した、安全なパトロール方法のレクチャー。</li>
+        </ul>
+        <div class="highlight-box">
+            <p style="margin:0; font-weight: bold; color: #721c24;">【重要】活動にあたっての注意</p>
+            <p style="margin:5px 0 0 0; font-size: 14px;">無理な追跡や検挙は行わず、不審者を見つけた際は速やかに警察（110番）へ通報してください。</p>
+        </div>
+    </section>
+
+    <section class="info-card">
+        <h2>お問い合わせ</h2>
+        <p style="font-size: 15px;">
+            <strong>大山県 生活安全課</strong><br>
+            電話：なし
+        </p>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-copy">&copy; <span id="footer-year"></span> 大山県 Oyama Prefecture</div>
+    <div class="roblox-disclaimer">
+        ※本サイトは大山県（架空）の広報を目的とした、Roblox（ロブロックス）上の体験に関するウェブサイトです。<br>
+        実在の警察組織やボランティア団体とは一切関係ありません。
+    </div>
+</footer>
+
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+    });
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
