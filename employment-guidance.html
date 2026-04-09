@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>県内就職ガイダンス - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f0f2f5;
+            --text-color: #333;
+            --white: #ffffff;
+            --border-color: #ddd;
+            --accent-blue: #0033cc;
+            --oyama-green: #2d8c3c;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            background: var(--main-color);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--white);
+        }
+        .logo-area img { height: 35px; }
+        .logo-area h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
+
+        .nav-toggle { display: none; cursor: pointer; background: none; border: none; padding: 10px; }
+        .nav-toggle span { display: block; width: 25px; height: 2px; background: var(--white); margin: 6px 0; }
+
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        @media (max-width: 1024px) {
+            .nav-toggle { display: block; }
+            .main-nav { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: var(--main-color); flex-direction: column; justify-content: center; align-items: center; transition: 0.4s; gap: 20px; }
+            .main-nav.active { right: 0; }
+            .nav-item { font-size: 18px; width: 80%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+        }
+
+        /* --- メインコンテンツ --- */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .breadcrumb { font-size: 12px; margin-bottom: 15px; color: #666; }
+        .breadcrumb a { color: var(--accent-blue); text-decoration: none; }
+
+        .page-title {
+            font-size: 24px;
+            color: var(--main-color);
+            border-bottom: 3px solid var(--main-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #232337 0%, #3a3a5e 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .hero-banner h2 { margin: 0 0 10px 0; font-size: 28px; }
+        .hero-banner p { margin: 0; font-size: 16px; opacity: 0.9; }
+
+        .info-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .info-card h3 {
+            margin-top: 0;
+            font-size: 20px;
+            color: var(--main-color);
+            border-left: 5px solid var(--oyama-green);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* イベントリスト */
+        .event-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            display: flex;
+            gap: 20px;
+        }
+        .event-item:last-child { border-bottom: none; }
+        .event-date {
+            background: var(--oyama-green);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            height: fit-content;
+            min-width: 100px;
+            text-align: center;
+        }
+        .event-detail h4 { margin: 0 0 5px 0; font-size: 18px; }
+        .event-detail p { margin: 0; font-size: 14px; color: #666; }
+
+        .btn-entry {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .btn-entry:hover { background: #002288; }
+
+        .link-list { list-style: none; padding: 0; }
+        .link-list li { margin-bottom: 10px; }
+        .link-list a { color: var(--accent-blue); text-decoration: underline; font-weight: bold; }
+
+        /* --- フッター --- */
+        footer {
+            background: #f8f9fa;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+        .footer-copy { font-weight: bold; color: var(--main-color); margin-bottom: 10px; }
+        .roblox-disclaimer { font-size: 12px; color: #777; line-height: 1.5; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <button class="nav-toggle" id="nav-toggle">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <div class="breadcrumb">
+        <a href="index.html">トップ</a> ＞ <a href="business.html">ビジネス・産業</a> ＞ 県内就職ガイダンス
+    </div>
+
+    <div class="hero-banner">
+        <h2>大山県で、働こう。</h2>
+        <p>県内企業の魅力発見から、就職支援、移住サポートまで。</p>
+    </div>
+
+    <h1 class="page-title">県内就職ガイダンス・合同説明会</h1>
+
+    <section class="info-card">
+        <h3>近日開催のイベント</h3>
+        
+        <div class="event-item">
+            <div class="event-date">5月20日(水)</div>
+            <div class="event-detail">
+                <h4>令和8年度 第1回 大山県合同企業説明会</h4>
+                <p>会場：大山県立産業ホール / 対象：2027年卒業予定の学生・一般求職者</p>
+                <a href="guidance-entry.html" class="btn-entry">参加予約（無料）</a>
+            </div>
+        </div>
+
+        <div class="event-item">
+            <div class="event-date">6月12日(金)</div>
+            <div class="event-detail">
+                <h4>若手社員とのオンライン座談会</h4>
+                <p>会場：Zoom（オンライン） / 大山県内のIT・製造・観光業の若手社員が登壇</p>
+                <a href="guidance-entry.html" class="btn-entry">参加予約（無料）</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-card">
+        <h3>就職支援制度</h3>
+        <p>大山県では、県外からのUIJターン就職を希望する方を対象に、様々な支援を行っています。</p>
+        <ul class="link-list">
+            <li><a href="uij-support.html">・移住支援金制度（最大100万円の支給）</a></li>
+            <li><a href="housing-support.html">・県営住宅・空き家バンクのご案内</a></li>
+            <li><a href="job-matching.html">・大山キャリアマッチング（県公式求人サイト）</a></li>
+        </ul>
+    </section>
+
+    <section class="info-card">
+        <h3>お問い合わせ先</h3>
+        <p style="font-size: 15px;">
+            大山県 商工労働部 雇用推進課<br>
+            電話：012-345-6789（平日 8:30〜17:15）<br>
+            メール：koyou@pref.oyama.lg.jp
+        </p>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-copy">&copy; <span id="footer-year"></span> 大山県 Oyama Prefecture</div>
+    <div class="roblox-disclaimer">
+        ※本サイトは大山県（架空）の広報を目的とした、Roblox（ロブロックス）上の体験に関するウェブサイトです。<br>
+        実在の企業や団体、就職イベントとは一切関係ありません。
+    </div>
+</footer>
+
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('open');
+        mainNav.classList.toggle('active');
+    });
+
+    // フッターの年を自動更新
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
