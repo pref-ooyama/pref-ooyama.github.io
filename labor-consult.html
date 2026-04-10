@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>労働相談窓口のご案内 - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f0f2f5;
+            --text-color: #333;
+            --white: #ffffff;
+            --border-color: #ddd;
+            --accent-green: #2e7d32;
+            --alert-red: #c62828;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- ヘッダー（スマホ対応） --- */
+        header {
+            background: var(--main-color);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--white);
+        }
+        .logo-area img { height: 35px; }
+        .logo-area h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            margin: 6px 0;
+        }
+
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        @media (max-width: 1024px) {
+            .nav-toggle { display: block; }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--main-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s;
+                gap: 20px;
+            }
+            .main-nav.active { right: 0; }
+            .nav-item { font-size: 18px; width: 80%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+        }
+
+        /* --- メインコンテンツ --- */
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            color: var(--main-color);
+            border-bottom: 3px solid var(--main-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .info-card h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: var(--accent-green);
+            border-left: 5px solid var(--accent-green);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .consult-box {
+            background: #f9fbf9;
+            border: 1px solid #e0ede0;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .consult-box h3 { margin-top: 0; font-size: 17px; color: #333; }
+        
+        .alert-box {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            padding: 15px;
+            border-radius: 6px;
+            color: var(--alert-red);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* --- フッター --- */
+        footer {
+            background: #f8f9fa;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+        .footer-copy { font-weight: bold; color: var(--main-color); margin-bottom: 10px; }
+        .roblox-disclaimer { font-size: 12px; color: #777; line-height: 1.5; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <button class="nav-toggle" id="nav-toggle">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <h1 class="page-title">労働相談窓口のご案内</h1>
+
+    <section class="info-card">
+        <p>大山県では、賃金、解雇、ハラスメントなどの労働問題や、職場環境に関する悩みについて、専門の相談員がアドバイスを行う相談窓口を設置しています。秘密は厳守されますので、お気軽にご相談ください。</p>
+    </section>
+
+    <section class="info-card">
+        <h2>県民労働相談センター</h2>
+        <div class="consult-box">
+            <h3>一般労働相談（労働者・事業主向け）</h3>
+            <p>解雇、雇い止め、配置転換、賃金の未払い、労働時間などの労働条件全般に関する相談を承ります。</p>
+        </div>
+        <div class="consult-box">
+            <h3>職場でのハラスメント相談</h3>
+            <p>パワーハラスメント、セクシャルハラスメント、妊娠・出産・育児休業等に関するハラスメントなどについて専門的に対応します。</p>
+        </div>
+    </section>
+
+    <section class="info-card">
+        <h2>労働委員会による個別紛争解決</h2>
+        <p>労働者個人と事業主との間でトラブルが発生し、当事者間での解決が困難な場合に、労働委員会の委員が間に入って解決を支援する「あっせん」制度を利用できます。</p>
+    </section>
+
+    <section class="info-card">
+        <h2>お問い合わせ</h2>
+        <div class="alert-box">
+            ※相談は無料です。対面での相談を希望される場合は事前にご連絡ください。
+        </div>
+        <p style="font-size: 15px;">
+            <strong>大山県</strong><br>
+            電話：なし
+        </p>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-copy">&copy; <span id="footer-year"></span> 大山県 Oyama Prefecture</div>
+    <div class="roblox-disclaimer">
+        ※本サイトは大山県（架空）の広報を目的とした、Roblox（ロブロックス）上の体験に関するウェブサイトです。<br>
+        実在の行政機関や労働基準監督署等とは一切関係ありません。
+    </div>
+</footer>
+
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+    });
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
