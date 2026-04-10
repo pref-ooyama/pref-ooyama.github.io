@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大山メタハイツ入居案内 - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f0f2f5;
+            --text-color: #333;
+            --white: #ffffff;
+            --border-color: #ddd;
+            --accent-green: #27ae60;
+            --prepare-gray: #7f8c8d;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- ヘッダー（スマホ対応） --- */
+        header {
+            background: var(--main-color);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--white);
+        }
+        .logo-area img { height: 35px; }
+        .logo-area h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        @media (max-width: 1024px) {
+            .nav-toggle { display: block; }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--main-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s;
+                gap: 20px;
+            }
+            .main-nav.active { right: 0; }
+            .nav-item { font-size: 18px; width: 80%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+        }
+
+        /* --- メインコンテンツ --- */
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            color: var(--main-color);
+            border-bottom: 3px solid var(--main-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .info-card h2 {
+            margin-top: 0;
+            font-size: 20px;
+            color: var(--accent-green);
+            border-left: 5px solid var(--accent-green);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* 申し込みセクション（準備中） */
+        .apply-box {
+            background: #f8f9fa;
+            border: 2px dashed var(--prepare-gray);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .apply-box h3 { color: var(--prepare-gray); margin-top: 0; }
+        .status-badge {
+            display: inline-block;
+            background: var(--prepare-gray);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .facility-info table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .facility-info th, .facility-info td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+        .facility-info th { background: #fdfdfd; width: 30%; }
+
+        /* --- フッター --- */
+        footer {
+            background: #f8f9fa;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+        .footer-copy { font-weight: bold; color: var(--main-color); margin-bottom: 10px; }
+        .roblox-disclaimer { font-size: 12px; color: #777; line-height: 1.5; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <button class="nav-toggle" id="nav-toggle">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <h1 class="page-title">県営住宅「大山メタハイツ」入居案内</h1>
+
+    <section class="info-card facility-info">
+        <h2>物件概要</h2>
+        <p>大山メタハイツは、県民の皆様に安全で快適な住環境を低廉な家賃で提供するための県営住宅です。</p>
+        <table>
+            <tr><th>所在地</th><td>大山県大山市メタ区1-2-3</td></tr>
+            <tr><th>構造</th><td>鉄筋コンクリート造 10階建（エレベーター完備）</td></tr>
+            <tr><th>間取り</th><td>1LDK / 2LDK / 3LDK</td></tr>
+            <tr><th>家賃</th><td>世帯所得に応じて算出（減免制度あり）</td></tr>
+        </table>
+    </section>
+
+    <section class="info-card">
+        <h2>入居申し込み</h2>
+        <div class="apply-box">
+            <span class="status-badge">準備中</span>
+            <h3>ただいま申し込みの受付は行っておりません</h3>
+            <p>
+                次回の定期募集に向け、現在システムのメンテナンスおよび空室確認を行っております。<br>
+                募集開始時期が決定次第、本ページおよび県報にてお知らせいたします。
+            </p>
+        </div>
+    </section>
+
+    <section class="info-card">
+        <h2>主な入居資格</h2>
+        <ul>
+            <li>大山県内に住所または勤務先があること。</li>
+            <li>現に住宅に困窮していることが明らかなこと。</li>
+            <li>世帯の総所得が一定の基準以下であること。</li>
+            <li>暴力団員でないこと。</li>
+        </ul>
+    </section>
+
+    <section class="info-card">
+        <h2>お問い合わせ</h2>
+        <p style="font-size: 15px;">
+            <strong>大山県</strong><br>
+            電話：なし
+        </p>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-copy">&copy; <span id="footer-year"></span> 大山県 Oyama Prefecture</div>
+    <div class="roblox-disclaimer">
+        ※本サイトは大山県（架空）の広報を目的とした、Roblox（ロブロックス）上の体験に関するウェブサイトです。<br>
+        実在の不動産物件や公的機関とは一切関係ありません。
+    </div>
+</footer>
+
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+    });
+
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
