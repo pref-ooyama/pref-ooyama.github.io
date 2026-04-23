@@ -7,7 +7,7 @@
     <link rel="icon" href="oyama.webp" type="image/webp">
     <style>
         :root {
-            --main-color: #232337;
+            --main-color: #232337; 
             --bg-light: #f4f7f4;
             --text-color: #333;
             --white: #ffffff;
@@ -23,7 +23,7 @@
             line-height: 1.6;
         }
 
-        /* --- ヘッダー --- */
+        /* --- ヘッダー・ナビゲーション --- */
         header {
             background: var(--main-color);
             color: var(--white);
@@ -54,7 +54,6 @@
         .logo-area img { height: 35px; }
         .logo-area h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
 
-        /* ハンバーガーボタン */
         .nav-toggle {
             display: none;
             cursor: pointer;
@@ -73,7 +72,6 @@
             transition: 0.3s;
         }
 
-        /* ナビゲーション */
         .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
         .nav-item {
             padding: 10px 15px;
@@ -86,7 +84,6 @@
         }
         .nav-item:hover { background: rgba(255,255,255,0.1); }
 
-        /* スマホ用レスポンシブ設定 */
         @media (max-width: 1024px) {
             .nav-toggle { display: block; }
             .main-nav {
@@ -102,23 +99,29 @@
             .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
 
-        /* --- ページ本体のスタイル（元の記述を維持） --- */
+        /* --- コンテンツ構造 --- */
         .container { max-width: 1100px; margin: 40px auto; display: flex; gap: 30px; padding: 0 20px; }
         .side-menu { flex: 0 0 260px; height: fit-content; position: sticky; top: 100px; }
         .side-card { background: var(--white); border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-top: 4px solid var(--accent-green); }
-        .side-card h2 { font-size: 18px; margin-top: 0; color: var(--accent-green); }
+        .side-card h2 { font-size: 18px; margin-top: 0; color: var(--accent-green); display: flex; align-items: center; gap: 8px; }
         .side-nav-list { list-style: none; padding: 0; margin: 0; }
-        .side-nav-list li a { display: block; padding: 12px 10px; text-decoration: none; color: #555; border-bottom: 1px solid #eee; }
+        .side-nav-list li a { display: block; padding: 12px 10px; text-decoration: none; color: #555; border-bottom: 1px solid #eee; transition: 0.2s; }
+        .side-nav-list li a:hover { background: #f0f9f0; color: var(--accent-green); padding-left: 15px; }
+
         .main-content { flex: 1; }
         .edu-section { background: var(--white); border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
         .section-header { background: var(--accent-green); color: white; padding: 15px 25px; }
+        .section-header h3 { margin: 0; font-size: 1.2rem; }
         .grid-links { display: grid; grid-template-columns: repeat(2, 1fr); padding: 20px; gap: 15px; }
-        .grid-links a { display: flex; align-items: center; padding: 15px; background: #f9f9f9; border: 1px solid #eee; border-radius: 6px; text-decoration: none; color: var(--text-color); }
+        .grid-links a { display: flex; align-items: center; padding: 15px; background: #f9f9f9; border: 1px solid #eee; border-radius: 6px; text-decoration: none; color: var(--text-color); font-weight: 500; transition: 0.2s; }
+        .grid-links a:hover { border-color: var(--accent-green); background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transform: translateY(-2px); }
+
         @media (max-width: 850px) {
             .container { flex-direction: column; }
             .side-menu { flex: none; width: 100%; position: static; }
             .grid-links { grid-template-columns: 1fr; }
         }
+
         footer { text-align: center; padding: 40px 0; color: #777; font-size: 13px; }
     </style>
 </head>
@@ -170,11 +173,34 @@
                 <a href="mother-child.html">母子保健・健診</a>
             </div>
         </section>
-        </main>
+
+        <section id="school" class="edu-section">
+            <div class="section-header"><h3>学校・教育</h3></div>
+            <div class="grid-links">
+                <a href="admission.html">小・中学校への入学</a>
+                <a href="exam-info.html">県立高校入試情報</a>
+                <a href="school-lunch.html">学校給食について</a>
+                <a href="scholarship.html">奨学金・就学援助</a>
+            </div>
+        </section>
+
+        <section id="lifelong" class="edu-section">
+            <div class="section-header"><h3>生涯学習・文化</h3></div>
+            <div class="grid-links">
+                <a href="library.html">県立図書館の利用</a>
+                <a href="museum.html">博物館・美術館</a>
+                <a href="sports.html">スポーツ施設の予約</a>
+                <a href="lecture.html">市民公開講座</a>
+            </div>
+        </section>
+    </main>
 </div>
 
+<footer>
+    &copy; 大山県 Oyama Prefecture
+</footer>
+
 <script>
-    // ハンバーガーメニュー制御
     const navToggle = document.getElementById('nav-toggle');
     const mainNav = document.getElementById('main-nav');
     navToggle.addEventListener('click', () => {
