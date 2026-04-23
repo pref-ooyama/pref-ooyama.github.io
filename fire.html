@@ -22,92 +22,65 @@
             line-height: 1.6;
         }
 
-        /* --- ヘッダー（共通） --- */
+        /* --- ヘッダー・ナビゲーション（レスポンシブ対応） --- */
         header { background: var(--main-color); color: var(--white); position: sticky; top: 0; z-index: 1000; }
-        .header-container { width: 100%; display: flex; align-items: center; justify-content: space-between; height: 70px; padding: 0 30px; box-sizing: border-box; }
-        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); }
+        
+        .header-container { width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; box-sizing: border-box; }
+        
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); z-index: 1100; }
         .logo-area img { height: 45px; }
         .logo-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            z-index: 1100;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+        .nav-toggle span {
+            display: block; width: 25px; height: 2px; background: var(--white); margin: 6px 0; transition: 0.3s;
+        }
+
         .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
-        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; }
+        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; transition: background 0.2s; }
         .nav-item:hover { background: rgba(255,255,255,0.1); }
 
-        /* --- 防災ページ：落ち着いた「備え」のレイアウト --- */
-        .content {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+        @media (max-width: 1024px) {
+            .nav-toggle { display: block; }
+            .main-nav {
+                position: fixed; top: 0; right: -100%; width: 70%; height: 100vh;
+                background: var(--main-color); flex-direction: column;
+                justify-content: center; align-items: center;
+                transition: 0.4s; gap: 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            }
+            .main-nav.active { right: 0; }
+            .nav-item { font-size: 18px; width: 80%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+            .nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .nav-toggle.open span:nth-child(2) { opacity: 0; }
+            .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
 
-        .hero-title {
-            border-bottom: 2px solid var(--main-color);
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-        }
-
+        /* --- 防災ページ：レイアウト --- */
+        .content { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .hero-title { border-bottom: 2px solid var(--main-color); margin-bottom: 30px; padding-bottom: 10px; }
         .hero-title h2 { margin: 0; color: var(--main-color); }
 
-        /* 特設リンク：県警HP */
         .police-banner {
-            background: #fff;
-            border: 2px solid #2980b9;
-            padding: 20px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-decoration: none;
-            color: #2980b9;
-            font-weight: bold;
-            transition: background 0.2s;
+            background: #fff; border: 2px solid #2980b9; padding: 20px;
+            margin-bottom: 30px; display: flex; justify-content: space-between;
+            align-items: center; text-decoration: none; color: #2980b9;
+            font-weight: bold; transition: background 0.2s;
         }
         .police-banner:hover { background: #ebf5fb; }
 
-        /* セクション構造 */
-        .prep-card {
-            background: var(--white);
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
-
-        .prep-card h3 {
-            margin-top: 0;
-            font-size: 1.4rem;
-            color: var(--accent-blue);
-            display: flex;
-            align-items: center;
-        }
-
-        .prep-card h3::before {
-            content: "■";
-            margin-right: 10px;
-            font-size: 1rem;
-        }
-
-        .prep-list {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0 0 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .prep-list li a {
-            display: block;
-            background: #f1f1f1;
-            padding: 15px;
-            text-decoration: none;
-            color: #444;
-            border-radius: 4px;
-            transition: 0.2s;
-        }
-
-        .prep-list li a:hover {
-            background: #e0e0e0;
-            color: #000;
-        }
+        .prep-card { background: var(--white); padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .prep-card h3 { margin-top: 0; font-size: 1.4rem; color: var(--accent-blue); display: flex; align-items: center; }
+        .prep-card h3::before { content: "■"; margin-right: 10px; font-size: 1rem; }
+        .prep-list { list-style: none; padding: 0; margin: 20px 0 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .prep-list li a { display: block; background: #f1f1f1; padding: 15px; text-decoration: none; color: #444; border-radius: 4px; transition: 0.2s; }
+        .prep-list li a:hover { background: #e0e0e0; color: #000; }
 
         footer { text-align: center; padding: 60px 0; color: #777; font-size: 13px; }
     </style>
@@ -120,7 +93,12 @@
             <img src="oyama.webp" alt="大山県章">
             <h1>大山県</h1>
         </a>
-        <nav class="main-nav">
+        <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
             <a href="life.html" class="nav-item">くらし・手続き</a>
             <a href="education.html" class="nav-item">子育て・教育</a>
             <a href="welfare.html" class="nav-item">健康・福祉</a>
@@ -137,13 +115,11 @@
         <h2>防災・安全情報</h2>
     </div>
 
-    <!-- 県警HPへの特設リンク -->
     <a href="https://oyama-prefectural-police.github.io" class="police-banner" target="_blank">
         大山県警察本部 ホームページ ↗
         <span style="font-size: 12px; font-weight: normal;">(外部サイトへ移動します)</span>
     </a>
 
-    <!-- 日頃の備えセクション -->
     <section class="prep-card">
         <h3>日頃からの備え</h3>
         <p>災害が発生した際に落ち着いて行動できるよう、ご家庭や職場で事前の準備をお願いします。</p>
@@ -157,7 +133,6 @@
         </ul>
     </section>
 
-    <!-- 防犯・安全セクション -->
     <section class="prep-card">
         <h3>防犯・地域の安全</h3>
         <ul class="prep-list">
@@ -172,5 +147,13 @@
     &copy; 大山県 Oyama Prefecture
 </footer>
 
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('open');
+        mainNav.classList.toggle('active');
+    });
+</script>
 </body>
 </html>
