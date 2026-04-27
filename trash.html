@@ -18,7 +18,7 @@
 
         body { font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif; margin: 0; background-color: var(--bg-light); color: var(--text-color); line-height: 1.6; }
 
-        /* --- ヘッダー（既存デザイン維持） --- */
+        /* --- ヘッダー --- */
         header { background: var(--main-color); color: var(--white); position: sticky; top: 0; z-index: 1000; }
         .header-container { width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-sizing: border-box; }
         .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); z-index: 1100; }
@@ -52,6 +52,9 @@
         .trash-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         .trash-table th, .trash-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         .trash-table th { background-color: var(--accent-green-light); color: var(--main-color); }
+
+        .btn-download { display: inline-block; background: var(--accent-green); color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 15px; }
+        .btn-download:hover { background: #219150; }
 
         footer { text-align: center; padding: 40px 20px; color: #777; font-size: 12px; margin-top: 50px; border-top: 1px solid #eee; }
     </style>
@@ -88,7 +91,13 @@
     </div>
 
     <div class="info-card">
-        <h2>分別カテゴリー一覧</h2>
+        <h2>収集カレンダー</h2>
+        <p>詳細な収集区分やルールについては、以下のPDFをご確認ください。</p>
+        <a href="calendar-gomi.pdf" class="btn-download" download>収集カレンダーPDFをダウンロード</a>
+    </div>
+
+    <div class="info-card">
+        <h2>分別カテゴリー（概要）</h2>
         <table class="trash-table">
             <thead>
                 <tr>
@@ -107,11 +116,10 @@
                 </tr>
                 <tr>
                     <td><strong>粗大ゴミ</strong></td>
-                    <td>家具、家電（特定品目を除く）、自転車など</td>
+                    <td>家具、家電、自転車など</td>
                 </tr>
             </tbody>
         </table>
-        <p style="margin-top: 15px; font-size: 0.9em; color: #666;">※地区ごとの収集日については、配布されている「地区別収集カレンダー」をご確認ください。</p>
     </div>
 </main>
 
