@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>名誉県民バッジの申請 - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f0f2f5;
+            --text-color: #333;
+            --accent-gold: #c5a059;
+            --accent-gold-light: #fffaf0;
+            --white: #ffffff;
+            --border-color: #ddd;
+        }
+
+        body { font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif; margin: 0; background-color: var(--bg-light); color: var(--text-color); line-height: 1.6; }
+
+        /* --- ヘッダー（既存デザイン維持） --- */
+        header { background: var(--main-color); color: var(--white); position: sticky; top: 0; z-index: 1000; }
+        .header-container { width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-sizing: border-box; }
+        .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); z-index: 1100; }
+        .logo-area img { height: 35px; }
+        .logo-area h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
+
+        .nav-toggle { display: none; cursor: pointer; z-index: 1100; background: none; border: none; padding: 10px; }
+        .nav-toggle span { display: block; width: 25px; height: 2px; background: var(--white); margin: 6px 0; transition: 0.3s; }
+
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; transition: background 0.2s; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        @media (max-width: 1024px) {
+            .nav-toggle { display: block; }
+            .main-nav { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: var(--main-color); flex-direction: column; justify-content: center; align-items: center; transition: 0.4s; gap: 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.3); }
+            .main-nav.active { right: 0; }
+            .nav-item { font-size: 18px; width: 80%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+            .nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .nav-toggle.open span:nth-child(2) { opacity: 0; }
+            .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        /* --- コンテンツ --- */
+        .content { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .page-title { font-size: 28px; color: var(--main-color); margin-bottom: 30px; border-left: 6px solid var(--accent-gold); padding-left: 15px; }
+        
+        .info-card { background: var(--white); padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid #eee; }
+        .info-card h2 { font-size: 18px; margin-top: 0; padding-bottom: 10px; border-bottom: 2px solid var(--accent-gold-light); color: var(--main-color); }
+
+        .btn-apply { display: inline-block; background: var(--accent-gold); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 10px; transition: 0.2s; }
+        .btn-apply:hover { background: #b08d48; }
+
+        footer { text-align: center; padding: 40px 20px; color: #777; font-size: 12px; margin-top: 50px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <h1 class="page-title">名誉県民バッジの申請</h1>
+
+    <div class="info-card">
+        <h2>名誉県民バッジとは</h2>
+        <p>大山県の発展に多大なる貢献をされた方、または県を代表して優れた功績を残された方に授与される記念のバッジです。</p>
+    </div>
+
+    <div class="info-card">
+        <h2>申請について</h2>
+        <p>申請資格を満たしている方は、以下のボタンより手続きを行ってください。申請受理後、審査を経て郵送にてお届けいたします。</p>
+        <a href="#" class="btn-apply">申請フォームへ進む</a>
+    </div>
+</main>
+
+<footer>
+    &copy; 2026 大山県 Oyama Prefecture
+</footer>
+
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('open');
+        mainNav.classList.toggle('active');
+    });
+</script>
+</body>
+</html>
