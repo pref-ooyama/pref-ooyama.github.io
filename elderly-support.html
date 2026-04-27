@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在宅介護支援 - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f0f2f5;
+            --text-color: #3e3e3e;
+            --accent-amber: #d35400;
+            --accent-amber-light: #fef9e7;
+            --border-color: #eee;
+        }
+
+        body { font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif; margin: 0; background-color: var(--bg-light); color: var(--text-color); }
+
+        /* --- ヘッダー --- */
+        header { background: var(--main-color); color: white; position: sticky; top: 0; z-index: 1000; }
+        .header-container { width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; box-sizing: border-box; }
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; z-index: 1100; }
+        .logo-area img { height: 45px; }
+        .logo-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
+
+        .nav-toggle { display: none; cursor: pointer; background: none; border: none; padding: 10px; z-index: 1100; }
+        .nav-toggle span { display: block; width: 25px; height: 2px; background: white; margin: 6px 0; transition: 0.3s; }
+        
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: white; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; transition: background 0.2s; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        @media (max-width: 1024px) {
+            .nav-toggle { display: block; }
+            .main-nav { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: var(--main-color); flex-direction: column; justify-content: center; align-items: center; transition: 0.4s; gap: 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.3); }
+            .main-nav.active { right: 0; }
+            .nav-item { font-size: 18px; width: 80%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+            .nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .nav-toggle.open span:nth-child(2) { opacity: 0; }
+            .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        /* --- コンテンツ --- */
+        .content { max-width: 850px; margin: 40px auto; padding: 0 20px; }
+        .page-header { margin-bottom: 40px; border-bottom: 3px solid var(--accent-amber); display: inline-block; padding-bottom: 5px; }
+        .page-header h2 { margin: 0; color: var(--main-color); font-size: 24px; }
+        
+        .info-card { background: #fff; padding: 30px; border-radius: 12px; margin-bottom: 35px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
+        .info-card h3 { color: var(--accent-amber); margin-top: 0; font-size: 19px; border-bottom: 1px solid var(--accent-amber-light); padding-bottom: 8px; margin-bottom: 20px; }
+        
+        .support-box { background-color: var(--accent-amber-light); padding: 20px; border-radius: 8px; border-left: 5px solid var(--accent-amber); }
+
+        footer { text-align: center; padding: 40px 0; color: #777; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+        <nav class="main-nav" id="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <div class="page-header">
+        <h2>在宅介護支援</h2>
+    </div>
+
+    <div class="info-card">
+        <h3>安心して暮らせるために</h3>
+        <p>大山県では、住み慣れた自宅で安心して自分らしい生活を送ることができるよう、様々な在宅介護支援サービスを提供しています。一人で悩まず、まずは地域包括支援センターへご相談ください。</p>
+    </div>
+
+    <div class="info-card">
+        <h3>主な支援サービス</h3>
+        <div class="support-box">
+            <ul>
+                <li><strong>訪問介護：</strong>ホームヘルパーが自宅を訪問し、日常生活の介助を行います。</li>
+                <li><strong>デイサービス（通所介護）：</strong>日帰りで施設に通い、機能訓練や入浴のサービスを受けます。</li>
+                <li><strong>ショートステイ（短期入所）：</strong>一時的に施設に宿泊し、介護者の休息（レスパイト）にも役立てます。</li>
+            </ul>
+        </div>
+        <p style="margin-top: 20px;">各サービスの内容や利用料金については、<strong>毎年</strong>改訂されるガイドブックをご参照いただくか、担当のケアマネジャーまでお気軽にお問い合わせください。</p>
+    </div>
+</main>
+
+<footer>&copy; 大山県 Oyama Prefecture</footer>
+
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('open');
+        mainNav.classList.toggle('active');
+    });
+</script>
+</body>
+</html>
