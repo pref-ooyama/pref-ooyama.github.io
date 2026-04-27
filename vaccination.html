@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予防接種のお知らせ - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
+    <style>
+        :root {
+            --main-color: #232337; 
+            --bg-light: #f0f2f5;
+            --text-color: #3e3e3e;
+            --accent-green: #27ae60;
+            --accent-green-light: #e8f8f0;
+            --border-color: #eee;
+        }
+
+        body { font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif; margin: 0; background-color: var(--bg-light); color: var(--text-color); }
+
+        /* --- ヘッダー --- */
+        header { background: var(--main-color); color: white; position: sticky; top: 0; z-index: 1000; }
+        .header-container { width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; box-sizing: border-box; }
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; z-index: 1100; }
+        .logo-area img { height: 45px; }
+        .logo-area h1 { margin: 0; font-size: 24px; letter-spacing: 2px; }
+
+        .nav-toggle { display: none; cursor: pointer; background: none; border: none; padding: 10px; z-index: 1100; }
+        .nav-toggle span { display: block; width: 25px; height: 2px; background: white; margin: 6px 0; transition: 0.3s; }
+        
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: white; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; transition: background 0.2s; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        @media (max-width: 1024px) {
+            .nav-toggle { display: block; }
+            .main-nav { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: var(--main-color); flex-direction: column; justify-content: center; align-items: center; transition: 0.4s; gap: 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.3); }
+            .main-nav.active { right: 0; }
+            .nav-item { font-size: 18px; width: 80%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+            .nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .nav-toggle.open span:nth-child(2) { opacity: 0; }
+            .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        /* --- コンテンツ --- */
+        .content { max-width: 850px; margin: 40px auto; padding: 0 20px; }
+        .page-header { margin-bottom: 40px; border-bottom: 3px solid var(--accent-green); display: inline-block; padding-bottom: 5px; }
+        .page-header h2 { margin: 0; color: var(--main-color); font-size: 24px; }
+        
+        .info-card { background: #fff; padding: 30px; border-radius: 12px; margin-bottom: 35px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
+        .info-card h3 { color: var(--accent-green); margin-top: 0; font-size: 19px; border-bottom: 1px solid var(--accent-green-light); padding-bottom: 8px; margin-bottom: 20px; }
+        
+        .notice-box { background-color: var(--accent-green-light); padding: 20px; border-radius: 8px; border-left: 5px solid var(--accent-green); }
+
+        footer { text-align: center; padding: 40px 0; color: #777; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+        <nav class="main-nav" id="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+        </nav>
+    </div>
+</header>
+
+<main class="content">
+    <div class="page-header">
+        <h2>予防接種のお知らせ</h2>
+    </div>
+
+    <div class="info-card">
+        <h3>定期予防接種について</h3>
+        <p>大山県では、感染症を予防し健康を維持するため、<strong>毎年</strong>対象となる年齢の方へ予防接種のご案内を送付しています。指定の医療機関にて接種を受けてください。</p>
+    </div>
+
+    <div class="info-card">
+        <h3>犬の狂犬病予防接種</h3>
+        <p>狂犬病予防法に基づき、飼い犬への予防接種は飼い主の義務です。</p>
+        <div class="notice-box">
+            <strong>【狂犬病予防注射の実施】</strong><br>
+            ・実施期間：<strong>毎年</strong>春（4月〜6月）に集団接種を実施しています。<br>
+            ・対象：生後91日以上のすべての飼い犬。<br>
+            ・手続き：動物病院での個別接種も可能です。接種後は必ず市町村窓口で「注射済票」の交付を受けてください。
+        </div>
+    </div>
+</main>
+
+<footer>&copy; 大山県 Oyama Prefecture</footer>
+
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('open');
+        mainNav.classList.toggle('active');
+    });
+</script>
+</body>
+</html>
