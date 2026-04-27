@@ -4,96 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>くらし・手続き - 大山県</title>
+    <link rel="icon" href="oyama.webp" type="image/webp">
     <style>
         :root {
-            --main-color: #2c3e50;
+            --main-color: #232337; 
+            --bg-light: #f0f2f5;
+            --text-color: #333;
             --accent-color: #3498db;
-            --bg-color: #f4f7f6;
-            --card-bg: #ffffff;
-            --text-main: #2d3436;
+            --white: #ffffff;
+            --border-color: #ddd;
         }
 
-        body { font-family: "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; }
+        body { font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif; margin: 0; background-color: var(--bg-light); color: var(--text-color); line-height: 1.6; }
 
-        /* ヘッダー */
-        header { background: var(--main-color); color: white; padding: 20px; text-align: center; }
-        .logo { font-size: 24px; font-weight: bold; letter-spacing: 2px; }
+        /* --- ヘッダー (トップページと完全統一・変更なし) --- */
+        header { background: var(--main-color); color: var(--white); position: sticky; top: 0; z-index: 1000; }
+        .header-container { width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-sizing: border-box; }
+        .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); z-index: 1100; }
+        .logo-area img { height: 35px; }
+        .logo-area h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
 
-        /* コンテンツ */
-        .container { max-width: 800px; margin: 30px auto; padding: 0 20px; }
-        .page-title { text-align: center; margin-bottom: 40px; color: var(--main-color); }
+        .nav-toggle { display: none; cursor: pointer; z-index: 1100; background: none; border: none; padding: 10px; }
+        .nav-toggle span { display: block; width: 25px; height: 2px; background: var(--white); margin: 6px 0; transition: 0.3s; }
 
-        .category-card { 
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--accent-color);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
+        .nav-item { padding: 10px 15px; color: var(--white); text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 4px; transition: background 0.2s; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); }
+
+        @media (max-width: 1024px) {
+            .nav-toggle { display: block; }
+            .main-nav { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: var(--main-color); flex-direction: column; justify-content: center; align-items: center; transition: 0.4s; gap: 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.3); }
+            .main-nav.active { right: 0; }
+            .nav-item { font-size: 18px; width: 80%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+            .nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .nav-toggle.open span:nth-child(2) { opacity: 0; }
+            .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
 
-        .category-card h2 { margin: 0 0 15px 0; font-size: 20px; color: var(--main-color); }
+        /* --- コンテンツ (新デザイン) --- */
+        .content { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .page-title { font-size: 28px; color: var(--main-color); margin-bottom: 30px; border-left: 6px solid var(--accent-color); padding-left: 15px; }
+        
+        .info-card { background: var(--white); padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .info-card h2 { font-size: 18px; margin-top: 0; padding-bottom: 10px; border-bottom: 2px solid var(--bg-light); color: var(--main-color); }
 
-        .link-list { list-style: none; padding: 0; margin: 0; }
-        .link-list li { margin: 10px 0; }
-        .link-list a {
-            display: block;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--text-main);
-            transition: all 0.3s;
-            border: 1px solid #edf2f7;
+        .link-list { list-style: none; padding: 0; margin: 15px 0 0 0; }
+        .link-list li { margin-bottom: 10px; }
+        .link-list a { 
+            display: block; padding: 12px 15px; background: #f8f9fa; border-radius: 8px; 
+            text-decoration: none; color: var(--text-color); font-weight: bold;
+            transition: all 0.2s; border: 1px solid #edf2f7;
         }
-        .link-list a:hover {
-            background: var(--accent-color);
-            color: white;
-            transform: translateX(5px);
-        }
+        .link-list a:hover { background: var(--accent-color); color: white; transform: translateX(5px); }
 
-        footer { text-align: center; padding: 30px; font-size: 12px; color: #95a5a6; }
+        footer { text-align: center; padding: 40px 20px; color: #777; font-size: 12px; margin-top: 50px; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">大山県ポータル</div>
+    <div class="header-container">
+        <a href="index.html" class="logo-area">
+            <img src="oyama.webp" alt="大山県章">
+            <h1>大山県</h1>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+            <a href="life.html" class="nav-item">くらし・手続き</a>
+            <a href="education.html" class="nav-item">子育て・教育</a>
+            <a href="welfare.html" class="nav-item">健康・福祉</a>
+            <a href="kanko.html" class="nav-item">観光・魅力</a>
+            <a href="business.html" class="nav-item">ビジネス・産業</a>
+            <a href="fire.html" class="nav-item">防災情報</a>
+            <a href="recruit.html" class="nav-item">採用案内</a>
+        </nav>
+    </div>
 </header>
 
-<div class="container">
+<main class="content">
     <h1 class="page-title">くらし・手続き</h1>
 
-    <div class="category-card">
+    <div class="info-card">
         <h2>住民登録・身分証明</h2>
         <ul class="link-list">
-            <li><a href="oyamapass.html">おおやまパスの新規発行</a></li>
-            <li><a href="badge.html">名誉県民バッジの申請</a></li>
+            <li><a href="oyamapass.html">おおやまパス（県民ICカード）の新規発行</a></li>
+            <li><a href="badge.html">名誉県民バッジの申請手続き</a></li>
         </ul>
     </div>
 
-    <div class="category-card">
-        <h2>税金・通貨</h2>
+    <div class="info-card">
+        <h2>税金・独自通貨</h2>
         <ul class="link-list">
             <li><a href="tax.html">県民税の支払いについて</a></li>
-            <li><a href="currency.html">独自通貨「OYAMA」の管理</a></li>
-            <li><a href="donation.html">大山振興募金への協力</a></li>
+            <li><a href="currency.html">大山県内限定通貨「OYAMA」の管理</a></li>
+            <li><a href="donation.html">大山振興募金への協力について</a></li>
         </ul>
     </div>
 
-    <div class="category-card">
+    <div class="info-card">
         <h2>住まい・環境</h2>
         <ul class="link-list">
-            <li><a href="housing.html">県営住宅の入居申し込み</a></li>
-            <li><a href="trash.html">ゴミ分別ガイド</a></li>
-            <li><a href="land.html">土地所有権の電子登録</a></li>
+            <li><a href="housing.html">県営「大山メタハイツ」入居申し込み</a></li>
+            <li><a href="trash.html">大山県式・ゴミ分別ガイド</a></li>
+            <li><a href="land.html">土地所有権の電子登録について</a></li>
         </ul>
     </div>
-</div>
+</main>
 
 <footer>
     &copy; 2026 大山県 Oyama Prefecture
 </footer>
 
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('open');
+        mainNav.classList.toggle('active');
+    });
+</script>
 </body>
 </html>
