@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyama News Online | 大山県ニュース</title>
+    <style>
+        /* 基本のスタイル設定 */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 5px solid #d32f2f;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        /* ナビゲーション */
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        /* メインコンテンツ */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        /* ニュース記事カード */
+        .main-article {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 300px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .category-tag {
+            background-color: #d32f2f;
+            color: white;
+            padding: 3px 8px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        h2 { margin-top: 10px; }
+
+        /* サイドバー */
+        aside {
+            background: #eee;
+            padding: 20px;
+        }
+
+        .sidebar-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>OYAMA NEWS</h1>
+</header>
+
+<nav>
+    <a href="#">HOME</a>
+    <a href="#">POLICE</a>
+    <a href="#">DISASTER</a>
+    <a href="#">RECRUIT</a>
+</nav>
+
+<div class="container">
+    <!-- メインニュース -->
+    <main class="main-article">
+        <span class="category-tag">CRIME</span>
+        <h2>大山県内でATM強奪事件が発生、警察が捜査中</h2>
+        <div class="article-image">
+            [ここに事件現場の画像を貼る]
+        </div>
+        <p>本日未明、大山県中央区の商業施設内に設置されていたATMが何者かによって破壊され、中の現金が奪われる事件が発生しました。</p>
+        <p>警察は、現場から逃走した黒い車両の行方を追うとともに、周辺の検問を強化しています。付近の住民には警戒を呼びかけています。</p>
+        <hr>
+        <p><small>公開日: 2026年5月4日</small></p>
+    </main>
+
+    <!-- サイドバー -->
+    <aside>
+        <h3>最新のトピックス</h3>
+        <div class="sidebar-item">
+            <h4>【募集】県警官を増員決定</h4>
+            <p>大山県警では、治安維持のため新たな隊員を募集しています...</p>
+        </div>
+        <div class="sidebar-item">
+            <h4>【天気】明日の大山県は晴れ</h4>
+            <p>最高気温は24度、絶好の外出日和となるでしょう。</p>
+        </div>
+    </aside>
+</div>
+
+</body>
+</html>
